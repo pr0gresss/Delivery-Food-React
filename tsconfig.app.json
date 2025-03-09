@@ -10,7 +10,8 @@
     "paths": {
       "@interfaces": ["app/shared/interfaces"],
       "@types": ["app/shared/types"],
-      "@components/*" : ["app/components/*"]
+      "@components/*" : ["app/components/*"],
+      "@services" : ["app/shared/services"],
     },
 
     /* Bundler mode */

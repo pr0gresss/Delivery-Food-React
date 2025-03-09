@@ -1,15 +1,23 @@
 import React from "react";
 import styles from "./Icon.module.scss"; 
-
-export type TIcon = "cart" | "youtube" | "instagram" | "twitter";
+import { TIcon } from "@types";
 
 interface IconProps {
   iconName: TIcon; 
   size?: "small" | "medium" | "large";
 }
+class Icon extends React.Component<IconProps> {
+  public static defaultProps = { 
+    size: "medium" 
+  }
 
-const Icon: React.FC<IconProps> = ({ iconName, size = "medium" }) => {
-  return <i className={`${styles.icon} ${styles[size]} ${styles[iconName]}`} />;
-};
+  public constructor(props: IconProps) {
+    super(props)
+  }
+
+  public render(): React.ReactNode {
+    return <i className={`${styles.icon} ${styles[this.props.size!]} ${styles[this.props.iconName]}`} />;
+  }
+}
 
 export default Icon;

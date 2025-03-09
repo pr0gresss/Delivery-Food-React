@@ -1,24 +1,37 @@
-import Icon, {TIcon} from "@components/atoms/Icon/Icon";
 import styles from "./Button.module.scss";
 import React from "react";
+import { Icon } from "@components/atoms";
+import { TIcon } from "@types";
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: "small" | "medium" | "large";
   variant?: "primary" | "outline";
   iconStart?: TIcon;
   text?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({className,size = "medium", variant = "primary", iconStart, text, onClick, disabled = false}) => {
-  return (
-    <button
-    className={`${className} ${styles.button} ${styles[size]} ${styles[variant]}`}
-    disabled={disabled}
-    onClick={onClick}>
-      {iconStart && <Icon iconName={iconStart} size={size}/> }
-      {text}
-    </button>
-  );
-};
+class Button extends React.Component<ButtonProps> {
+  public static defaultProps = {
+    size: "medium",
+    variant: "primary",
+    disabled: false,
+  };
+
+  public constructor(props: ButtonProps) {
+    super(props);
+  }
+
+  public render(): React.ReactNode {
+    return (
+      <button
+      className={`${this.props.className} ${styles.button} ${styles[this.props.size!]} ${styles[this.props.variant!]}`}
+      disabled={this.props.disabled}
+      onClick={this.props.onClick}>
+        {this.props.iconStart && <Icon iconName={this.props.iconStart} size={this.props.size}/> }
+        {this.props.text}
+      </button>
+    );
+  };
+}
 
 export default Button
