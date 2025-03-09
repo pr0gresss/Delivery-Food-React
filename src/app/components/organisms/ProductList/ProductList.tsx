@@ -56,6 +56,8 @@ class ProductList extends React.Component<ProductListProps, ProductListState> {
                 this.setCategory(category); 
               }}
               key={category}
+              // According to tt i need to disable it
+              disabled={true} 
             />
             )
           }

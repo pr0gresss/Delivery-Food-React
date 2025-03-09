@@ -15,10 +15,10 @@ class Footer extends React.Component {
             <div className={styles.footer__top__table__column}>
               <h4 className={styles.footer__top__table__column__title}>Company</h4>
               <div className={styles.footer__top__table__column__content}>
-                <a href="">Home</a>
-                <a href="">Order</a>
-                <a href="">FAQ</a>
-                <a href="">Contact</a>
+                <a>Home</a>
+                <a>Order</a>
+                <a>FAQ</a>
+                <a>Contact</a>
               </div>
             </div>
             <div className={styles.footer__top__table__column}>
@@ -33,7 +33,7 @@ class Footer extends React.Component {
             <div className={styles.footer__top__table__column}>
               <h4 className={styles.footer__top__table__column__title}>Flowbase</h4>
               <div className={styles.footer__top__table__column__content}>
-                <a href="">More Clonables</a>
+                <a>More Clonables</a>
               </div>
             </div>
           </div>
