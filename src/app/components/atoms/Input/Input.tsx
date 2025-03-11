@@ -1,14 +1,9 @@
 import React from "react";
 import styles from "./Input.module.scss";
 
-interface InputProps {
-  type?: "text" | "number" | "email" | "password";
-  defaultValue?: string | number;
-  min?: number;
-  max?: number;
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   variant?: "primary";
-  size?: "small" | "medium" | "large"; 
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  inputSize?: "small" | "medium" | "large"; 
 };
 
 class Input extends React.Component<InputProps> {
@@ -27,11 +22,8 @@ class Input extends React.Component<InputProps> {
     return (
       <input
         type={this.props.type}
-        defaultValue={this.props.type === "number" ? this.props.defaultValue ? this.props.defaultValue : 1 : undefined}
-        min={this.props.type === "number" ? this.props.min : undefined}
-        max={this.props.type === "number" ? this.props.max : undefined}
-        className={`${styles.input} ${styles[this.props.type!]} ${styles[this.props.size!]} ${styles[this.props.variant!]}`}
-        onChange={this.props.onChange}
+        className={`${styles.input} ${styles[this.props.type!]} ${styles[this.props.inputSize!]} ${styles[this.props.variant!]}`}
+        {...this.props}
       />
     );
   }

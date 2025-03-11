@@ -6,6 +6,7 @@ interface IconProps {
   iconName: TIcon; 
   size?: "small" | "medium" | "large";
 }
+
 class Icon extends React.Component<IconProps> {
   public static defaultProps = { 
     size: "medium" 

@@ -7,7 +7,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: "small" | "medium" | "large";
   variant?: "primary" | "outline";
   iconStart?: TIcon;
-  text?: string;
+  iconEnd?: TIcon;
 }
 
 class Button extends React.Component<ButtonProps> {
@@ -24,11 +24,11 @@ class Button extends React.Component<ButtonProps> {
   public render(): React.ReactNode {
     return (
       <button
-      className={`${this.props.className} ${styles.button} ${styles[this.props.size!]} ${styles[this.props.variant!]}`}
-      disabled={this.props.disabled}
-      onClick={this.props.onClick}>
-        {this.props.iconStart && <Icon iconName={this.props.iconStart} size={this.props.size}/> }
-        {this.props.text}
+      className={this.props.className +` ${styles.button} ${styles[this.props.size!]} ${styles[this.props.variant!]}`}
+      {...this.props}>
+        {this.props.iconStart && <Icon iconName={this.props.iconStart} size={this.props.size}/>}
+        {this.props.children}
+        {this.props.iconEnd && <Icon iconName={this.props.iconEnd} size={this.props.size}/>}
       </button>
     );
   };

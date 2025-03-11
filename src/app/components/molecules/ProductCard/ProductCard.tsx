@@ -60,8 +60,8 @@ class ProductCard extends React.Component<ProductCardProps, ProductCardState> {
           </div>
           <div className={styles.product__information__description}>{this.props.product.instructions.slice(0,100) + "..."}</div>
           <div className={styles.product__information__actions}>
-            <Input type="number" min={1} max={99} size="small" onChange={this.handleAmountChange}/>
-            <Button size="small" text="Add to cart" onClick={this.addToCart}/>
+            <Input type="number" defaultValue={1} min={1} max={99} inputSize="small" onChange={this.handleAmountChange}/>
+            <Button size="small" onClick={this.addToCart}>Add to cart</Button>
           </div>
         </div>
       </div>

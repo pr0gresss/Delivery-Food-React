@@ -45,7 +45,7 @@ class MenuPage extends React.Component<object, MenuPageState> {
           <div className={styles.container__header}>
             <h1 className={styles.container__header__title}>Browse our menu</h1>
             <p className={styles.container__header__description}>
-              Use our menu to place an order online, or <TooltipElement text="phone" tooltipText="8-800-555-35-35"/> our store to place a pickup order. Fast and fresh food.</p>
+              Use our menu to place an order online, or <TooltipElement tooltipText="8-800-555-35-35">phone</TooltipElement> our store to place a pickup order. Fast and fresh food.</p>
           </div>
           <ProductList products={this.state.products}/>
         </div>

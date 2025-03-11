@@ -51,14 +51,15 @@ class ProductList extends React.Component<ProductListProps, ProductListState> {
           {this.productCategories.map((category) => 
             <Button 
               variant={this.state.currentCategory == category ? "primary" : "outline"} 
-              text={category} 
               onClick={() => {
                 this.setCategory(category); 
               }}
               key={category}
               // According to tt i need to disable it
               disabled={true} 
-            />
+              >
+              {category}
+            </Button>
             )
           }
         </div>
@@ -68,11 +69,10 @@ class ProductList extends React.Component<ProductListProps, ProductListState> {
           ))}
         </div>
         <Button 
-          className={styles.container__load} 
-          text="See more"
           onClick={this.loadMoreProducts}
-          disabled={this.paginatedProducts.length >= this.filteredProducts.length}
-        />
+          disabled={this.paginatedProducts.length >= this.filteredProducts.length}>
+          See more
+        </Button>
       </div>
     );
   }
