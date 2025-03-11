@@ -1,22 +1,18 @@
-import React, { useState } from "react";
+import React, { HTMLAttributes } from "react";
 import styles from "./TooltipElement.module.scss";
 
-export interface TooltipElementProps {
-  text: string,
+export interface TooltipElementProps extends HTMLAttributes<HTMLElement> {
   tooltipText: string,
 }
 
-const TooltipElement: React.FC<TooltipElementProps> = ({ text, tooltipText }) => {
-  const [isTooltipVisible, setTooltipVisibility] = useState(false)
+const TooltipElement: React.FC<TooltipElementProps> = ({ tooltipText, children }) => {
 
   return (
-    <span 
-      className={styles.element}
-      onMouseEnter={() => setTooltipVisibility(true)}
-      onMouseLeave={() => setTooltipVisibility(false)}
-    >
-      {text}
-      {isTooltipVisible && <div className={`${styles.element__tooltip} ${isTooltipVisible ? styles.visible : ""}`}>{tooltipText}</div>}
+    <span className={styles.element}>
+      {children}
+      <div className={styles.element__tooltip}>
+        {tooltipText}
+      </div>
     </span>
   );
 };

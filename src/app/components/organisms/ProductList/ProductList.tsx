@@ -35,13 +35,14 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
         {productCategories.map((category) => 
           <Button 
             variant={currentCategory == category ? "primary" : "outline"} 
-            text={category} 
             onClick={() => {
               setCategory(category); 
               setPage(1);
             }}
             key={category}
-          />
+          >
+            {category}
+          </Button>
           )
         }
       </div>
@@ -52,9 +53,10 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
       </div>
       <Button 
         className={styles.container__load} 
-        text="See more"
         onClick={loadMoreProducts}
-      />
+      >
+        See more
+      </Button>
     </div>
   );
 };

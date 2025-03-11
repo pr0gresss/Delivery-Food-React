@@ -6,17 +6,25 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   size?: "small" | "medium" | "large";
   variant?: "primary" | "outline";
   iconStart?: TIcon;
-  text?: string;
+  iconEnd?: TIcon
 }
 
-const Button: React.FC<ButtonProps> = ({className,size = "medium", variant = "primary", iconStart, text, onClick, disabled = false}) => {
+const Button: React.FC<ButtonProps> = ({
+    className = "", 
+    size = "medium", 
+    variant = "primary", 
+    iconStart, iconEnd, 
+    children, 
+    ...props
+  }) => {
   return (
     <button
     className={`${className} ${styles.button} ${styles[size]} ${styles[variant]}`}
-    disabled={disabled}
-    onClick={onClick}>
-      {iconStart && <Icon iconName={iconStart} size={size}/> }
-      {text}
+    {...props}
+    >
+      {iconStart && <Icon iconName={iconStart} size={size}/>}
+      {children}
+      {iconEnd && <Icon iconName={iconEnd} size={size}/>}
     </button>
   );
 };
