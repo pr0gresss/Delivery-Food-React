@@ -8,7 +8,9 @@
     "skipLibCheck": true,
     "baseUrl": "./src",
     "paths": {
-      "@interfaces/*": ["app/shared/interfaces"]  // Path alias should be inherited from root
+      "@interfaces": ["app/shared/interfaces"],
+      "@types": ["app/shared/types"],
+      "@components/*" : ["app/components/*"]
     },
 
     /* Bundler mode */

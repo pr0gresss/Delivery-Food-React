@@ -1,1 +1,1 @@
-export * from "./IItemList";
+export * from "./IProduct";

@@ -1,0 +1,116 @@
+.footer {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 100px 120px 60px 120px;
+  background-color: var(--bg-secondary);
+  gap: 100px;
+  position: relative;
+  overflow: hidden;
+  background-image: url('/src/assets/images/props/footer-prop.svg');
+  background-size:contain;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  
+  &__top {
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    
+    &__company {
+      display: flex;
+      flex-flow: column;
+      gap: 25px;
+
+      img {
+        max-width: 40px;
+        width: 100%;
+      }
+
+      p {
+        font-size: 16px;
+        line-height: 27px;
+        letter-spacing: .36px;
+        max-width: 255px;
+        width: 100%;
+        color: var(--text-secondary);
+      }
+    }
+
+    &__table {
+      max-width: 600px;
+      gap: 20px;
+      width: 100%;
+      justify-content: space-between;
+      display: flex;
+
+      &__column {
+        display: flex;
+        flex-flow: column;
+        gap: 26px;
+
+        &__title {
+          font-size: 13px;
+          line-height: 20px;
+          font-weight: 400;
+          letter-spacing: 1.5px;
+          text-transform: uppercase;
+        }
+        
+        &__content {
+          gap: 28px;
+          display: flex;
+          flex-flow: column;
+          font-size: 15px;
+          line-height: 20px;
+          font-weight: 400;
+          
+          a {
+            color: var(--text-secondary);
+          }
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    z-index: 2;
+    display: flex;
+    flex-flow: column;
+    gap: 60px;
+
+    hr {
+      display: block;
+      height: 1px;
+      border: 0;
+      border-top: 1px solid rgba(126, 130, 143, 0.09);
+      margin: 1em 0;
+      padding: 0;
+    }
+
+    &__information {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &__build {
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 400;
+        color: var(--text-main);
+
+        a {
+          color: var(--text-tetriary);
+
+          &:hover {
+            opacity: .7;
+          }
+        }
+      }
+
+      &__socials {
+        display: flex;
+        gap: 24px;
+      }
+    }
+  }
+}

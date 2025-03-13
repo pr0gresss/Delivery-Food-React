@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-main);
+  transition: .3s ease-in-out;
+
+  &:hover {
+    color: var(--text-tetriary) !important;
+  }
+}
+
+:root {
+  font-family: Inter;
+  font-weight: 400;
+
+  /*Colors*/
+  --bg-main: #FFFFFF;
+  --bg-secondary: #F5FBFC;
+  --bg-gray: #7E828F4D;
+
+  --text-main: #08090A;
+  --text-secondary: #546285;
+  --text-tetriary: #35B8BE;
+  --text-gray: #7E828F4D;
+
+  --button-primary-bg: #35b8be;
+  --button-primary-text: #FFFFFF;
+  --button-primary-bg-hover: #23cad3;
+  --button-primary-bg-click: #57dee6;
+  --button-primary-stroke-focus: #000;
+
+  --button-outline-text: #222222;
+  --button-outline-stroke: rgba(97, 114, 131, 0.2);
+  --button-outline-stroke-focus: #000;
+  --button-outline-bg-hover: #23cad34f;
+  --button-outline-bg-click: #57dfe641;
+  
+  --input-primary-text: #000000;
+  --input-primary-bg: #FAFAFA;
+  --input-primary-bg-hover: #FAFAFA;
+  --input-primary-stroke: #DDDDDD;
+  --input-primary-stroke-hover: #35b8be;
+  --input-primary-stroke-focus: #000;
+}
+

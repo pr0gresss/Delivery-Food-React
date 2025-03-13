@@ -7,6 +7,8 @@ export default defineConfig({
   resolve: {
     alias: {
       "@interfaces": path.resolve(__dirname, "src/app/shared/interfaces"),
+      "@components": path.resolve(__dirname, "src/app/components"),
+      "@types": path.resolve(__dirname, "src/app/shared/types"),
     },
   },
 });
