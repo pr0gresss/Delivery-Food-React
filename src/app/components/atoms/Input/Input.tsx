@@ -6,19 +6,27 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   inputSize?: "small" | "medium" | "large"; 
 };
 
-const Input: React.FC<InputProps> = ({
-  type = "text",
-  inputSize = "medium",
-  variant = "primary",
-  ...props
-}) => {
-  return (
-    <input
-      type={type}
-      className={`${styles.input} ${styles[type]} ${styles[inputSize]} ${styles[variant]}`}
-      {...props}
-    />
-  );
-};
+class Input extends React.Component<InputProps> {
+  public static defaultProps = {
+    type: "text",
+    defaultValue: "",
+    size: "medium",
+    variant: "primary",
+  }
+
+  public constructor(props: InputProps) {
+    super(props)
+  }
+
+  public render(): React.ReactNode {
+    return (
+      <input
+        type={this.props.type}
+        className={`${styles.input} ${styles[this.props.type!]} ${styles[this.props.inputSize!]} ${styles[this.props.variant!]}`}
+        {...this.props}
+      />
+    );
+  }
+}
 
 export default Input;

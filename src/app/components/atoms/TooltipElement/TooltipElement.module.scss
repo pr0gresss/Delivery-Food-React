@@ -27,8 +27,8 @@
   }
 
   &:hover &__tooltip {
-    visibility: visible;
-    opacity: 1;
     animation: fadeInUp 0.2s ease-out forwards;
+    opacity: 1;
+    visibility: visible;
   }
 }

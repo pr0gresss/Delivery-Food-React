@@ -1,26 +1,58 @@
-import Footer from "@components/organisms/Footer/Footer";
-import Header from "@components/organisms/Header/Header";
+import { Footer, Header, ProductList } from "@components/organisms";
+import { IProduct } from "@interfaces";
 import styles from "./MenuPage.module.scss";
-import ProductList from "@components/organisms/ProductList/ProductList";
-import TooltipElement from "@components/atoms/TooltipElement/TooltipElement";
-import { testProducts } from "./productsData";
+import { TooltipElement } from "@components/atoms";
+import { ProductService } from "@services";
+import React from "react";
 
+interface MenuPageState {
+  products: IProduct[],
+  isLoading: boolean,
+  error: string
+}
 
-const MenuPage = () => {
-  return (
-    <>
-      <Header/>
-      <div className={styles.container}>
-        <div className={styles.container__header}>
-          <h1 className={styles.container__header__title}>Browse our menu</h1>
-          <p className={styles.container__header__description}>
-            Use our menu to place an order online, or <TooltipElement tooltipText="8-800-555-35-35">phone</TooltipElement> our store to place a pickup order. Fast and fresh food.</p>
+class MenuPage extends React.Component<object, MenuPageState> {
+  private productService: ProductService;
+
+  constructor(props: object) {
+    super(props)
+
+    this.state = {
+      products: [],
+      isLoading: true,
+      error: ""
+    }
+
+    this.productService = new ProductService();
+  }
+
+  public componentDidMount() {
+    this.productService
+      .getProducts()
+      .then((products) => {
+        this.setState({ products, isLoading: false });
+      })
+      .catch(() => {
+        this.setState({ error: "Error fetching products", isLoading: false });
+      });
+  }
+
+  render(): React.ReactNode {
+    return (
+      <>
+        <Header/>
+        <div className={styles.container}>
+          <div className={styles.container__header}>
+            <h1 className={styles.container__header__title}>Browse our menu</h1>
+            <p className={styles.container__header__description}>
+              Use our menu to place an order online, or <TooltipElement tooltipText="8-800-555-35-35">phone</TooltipElement> our store to place a pickup order. Fast and fresh food.</p>
+          </div>
+          <ProductList products={this.state.products}/>
         </div>
-        <ProductList products={testProducts}/>
-      </div>
-      <Footer/>
-    </>
-  );
-};
+        <Footer/>
+      </>
+    );
+  }
+}
 
 export default MenuPage;
