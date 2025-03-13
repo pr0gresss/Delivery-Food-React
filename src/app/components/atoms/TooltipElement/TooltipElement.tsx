@@ -5,8 +5,6 @@ interface TooltipElementProps extends HTMLAttributes<HTMLElement> {
   tooltipText: string,
 }
 
-
-
 class TooltipElement extends React.Component<TooltipElementProps> {
   public constructor(props: TooltipElementProps) {
     super(props)
