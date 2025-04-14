@@ -1,47 +1,20 @@
-import { ICartItem } from "@interfaces";
 import { Button } from "@components/atoms";
 import styles from "./CartButton.module.scss";
 import React from "react";
+import { CartContext, ICartContextType } from "@contexts";
 
-interface CartButtonState {
-  cartCount: number;
-}
-
-class CartButton extends React.Component<object, CartButtonState> {
-  public constructor(props: object) {
-    super(props);
-    this.state = {
-      cartCount: 0,
-    };
-  }
-
-  private getCartCount = () => {
-    const cart = localStorage.getItem("cart");
-    if (cart) {
-      const cartItems = JSON.parse(cart);
-      const totalAmount = cartItems.reduce((sum: number, cartItem: ICartItem) => sum + cartItem.amount, 0);
-      this.setState({ cartCount: totalAmount });
-    } else {
-      this.setState({ cartCount: 0 });
-    }
-  };
-
-  public componentDidMount = () => {
-    this.getCartCount();
-    window.addEventListener("storage", this.getCartCount);
-  }
-
-  public componentWillUnmount = () => {
-    window.removeEventListener("storage", this.getCartCount);
-  }
+class CartButton extends React.Component {
+  static contextType = CartContext;
+  declare context: ICartContextType;
 
   public render() {
+    const { totalItems } = this.context
     return (
       <div className={styles.cart}>
         <Button variant="primary" iconStart="cart"/>
           {
-            this.state.cartCount > 0 && 
-            <p className={styles.cart__number}>{this.state.cartCount}</p>
+            totalItems > 0 && 
+            <p className={styles.cart__number}>{this.context.totalItems}</p>
           }
       </div>
     );

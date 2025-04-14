@@ -2,8 +2,9 @@ import React from "react";
 import { IProduct } from "@interfaces";
 import { TCategory } from "@types";
 import styles from "./ProductList.module.scss";
-import { ProductCard } from "@components/molecules";
 import { Button } from "@components/atoms";
+import { ProductCard } from "@components/molecules";
+import { CartContext, ICartContextType } from "@contexts";
 
 interface ProductListProps {
   products: IProduct[]
@@ -17,6 +18,8 @@ interface ProductListState {
 class ProductList extends React.Component<ProductListProps, ProductListState> {
   private productsPerPage = 6;
   private productCategories: TCategory[] = ["Dessert", "Breakfast", "Dinner"]
+  static contextType = CartContext;
+  declare context: ICartContextType; 
 
   constructor(props: ProductListProps) {
     super(props);
@@ -45,6 +48,7 @@ class ProductList extends React.Component<ProductListProps, ProductListState> {
   }
 
   render(): React.ReactNode {
+    const { addToCart } = this.context;
     return (
       <div className={styles.container}>
         <div className={styles.container__categories}>
@@ -65,7 +69,7 @@ class ProductList extends React.Component<ProductListProps, ProductListState> {
         </div>
         <div className={styles.container__products}>
           {this.paginatedProducts.map((product: IProduct) => (
-            <ProductCard product={product} key={product.id} />
+            <ProductCard addToCart={addToCart} product={product} key={product.id} />
           ))}
         </div>
         <Button 

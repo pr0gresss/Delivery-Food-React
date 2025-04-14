@@ -1,10 +1,11 @@
-import { ICartItem, IProduct } from "@interfaces";
+import { IProduct } from "@interfaces";
 import styles from "./ProductCard.module.scss";
 import { Button, Input } from "@components/atoms";
 import React from "react";
 
 interface ProductCardProps {
   product: IProduct,
+  addToCart: (product: IProduct, amount: number) => void
 };
 
 interface ProductCardState {
@@ -16,7 +17,7 @@ class ProductCard extends React.Component<ProductCardProps, ProductCardState> {
     super(props)
 
     this.state = {
-      amount: 0
+      amount: 1
     }
   }
 
@@ -24,29 +25,11 @@ class ProductCard extends React.Component<ProductCardProps, ProductCardState> {
     this.setState({ amount: Number(event.target.value)});
   };
 
-  private getCart = (): ICartItem[] => {
-    const cart = localStorage.getItem("cart");
-    return cart ? JSON.parse(cart) : [];
-  };
-
-  private saveCart = (cart: ICartItem[]) => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  };
-
-  public addToCart = () => {
-
-    const cart = this.getCart();
-
-    const existingItem = cart.find((item) => item.product.id === this.props.product.id);
-
-    if (existingItem) {
-      existingItem.amount += this.state.amount;
-    } else {
-      cart.push({product: this.props.product, amount: this.state.amount});
-    }
-
-    this.saveCart(cart); 
-    window.dispatchEvent(new Event("storage"));
+  public handleAddToCart = () => {
+    const { product, addToCart } = this.props;
+    const { amount } = this.state;
+    addToCart(product, amount);
+    this.setState({ amount: 1 });
   };
 
   public render(): React.ReactNode {
@@ -61,7 +44,7 @@ class ProductCard extends React.Component<ProductCardProps, ProductCardState> {
           <div className={styles.product__information__description}>{this.props.product.instructions.slice(0,100) + "..."}</div>
           <div className={styles.product__information__actions}>
             <Input type="number" defaultValue={1} min={1} max={99} inputSize="small" onChange={this.handleAmountChange}/>
-            <Button size="small" onClick={this.addToCart}>Add to cart</Button>
+            <Button size="small" onClick={this.handleAddToCart}>Add to cart</Button>
           </div>
         </div>
       </div>

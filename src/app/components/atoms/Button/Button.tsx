@@ -22,13 +22,23 @@ class Button extends React.Component<ButtonProps> {
   }
 
   public render(): React.ReactNode {
+    const {
+      iconStart,
+      iconEnd,
+      children,
+      variant,
+      className,
+      size,
+      ...rest
+    } = this.props;
+
     return (
       <button
-      className={this.props.className +` ${styles.button} ${styles[this.props.size!]} ${styles[this.props.variant!]}`}
-      {...this.props}>
-        {this.props.iconStart && <Icon iconName={this.props.iconStart} size={this.props.size}/>}
-        {this.props.children}
-        {this.props.iconEnd && <Icon iconName={this.props.iconEnd} size={this.props.size}/>}
+      className={className +` ${styles.button} ${styles[size!]} ${styles[variant!]}`}
+      {...rest}>
+        {iconStart && <Icon iconName={iconStart} size={size}/>}
+        {children}
+        {iconEnd && <Icon iconName={iconEnd} size={size}/>}
       </button>
     );
   };

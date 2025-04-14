@@ -49,7 +49,7 @@
       }
     }
 
-    &:focus {
+    &:focus-visible {
       transition: none;
       outline: 2px solid var(--button-primary-stroke-focus);
     }
@@ -73,9 +73,15 @@
       }
     }
 
-    &:focus {
+    &:focus-visible {
       transition: none;
       outline: 2px solid var(--button-primary-stroke-focus);
+    }
+
+    &:disabled {
+      outline-color: var(--button-primary-bg-disabled);
+      color: var(--button-primary-text-disabled);
+      cursor: not-allowed;
     }
   }
 }

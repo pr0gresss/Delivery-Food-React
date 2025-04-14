@@ -12,6 +12,7 @@
       "@types": ["app/shared/types"],
       "@components/*" : ["app/components/*"],
       "@services" : ["app/shared/services"],
+      "@contexts" : ["app/shared/contexts"],
     },
 
     /* Bundler mode */

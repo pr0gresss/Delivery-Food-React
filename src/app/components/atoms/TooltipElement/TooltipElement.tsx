@@ -18,9 +18,9 @@ class TooltipElement extends React.Component<TooltipElementProps> {
         className={styles.element}
       >
         {this.props.children}
-        <div className={styles.element__tooltip} >
+        <span className={styles.element__tooltip}>
           {this.props.tooltipText}
-        </div>
+        </span>
       </span>
     );
   }
