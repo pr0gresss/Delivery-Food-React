@@ -22,7 +22,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   const loadCartFromStorage = () => {
     const localStorageCart = localStorage.getItem(CART_KEY);
     if (localStorageCart) {
-      return JSON.parse(localStorageCart);
+      return JSON.parse(localStorageCart) as ICartItem[];
     }
     return [];
   };

@@ -7,24 +7,11 @@ interface IconProps {
 	size?: 'small' | 'medium' | 'large';
 }
 
-class Icon extends React.Component<IconProps> {
-	public static defaultProps = {
-		size: 'medium',
-	};
-
-	public constructor(props: IconProps) {
-		super(props);
-	}
-
-	public render(): React.ReactNode {
-		const { size, iconName, ...rest } = this.props;
-		return (
-			<i
-				className={`${styles.icon} ${styles[size!]} ${styles[iconName]}`}
-				{...rest}
-			/>
-		);
-	}
-}
+const Icon: React.FC<IconProps> = ({ size = 'medium', iconName, ...rest }) => (
+	<i
+		className={`${styles.icon} ${styles[size!]} ${styles[iconName]}`}
+		{...rest}
+	/>
+);
 
 export default Icon;

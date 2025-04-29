@@ -1,85 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
 import { IProduct } from "@interfaces";
 import { TCategory } from "@types";
 import styles from "./ProductList.module.scss";
 import { Button } from "@components/atoms";
 import { ProductCard } from "@components/molecules";
-import { CartContext, ICartContextType } from "@contexts";
+import { useCart } from "@hooks";
 
 interface ProductListProps {
   products: IProduct[]
 }
 
-interface ProductListState {
-  currentCategory: TCategory;
-  currentPage: number;
-}
+const ProductList: React.FC<ProductListProps> = ({products}) => {
+  const {addToCart} = useCart()
+  const productsPerPage = 6;
+  const productCategories: TCategory[] = ["Dessert", "Breakfast", "Dinner"]
 
-class ProductList extends React.Component<ProductListProps, ProductListState> {
-  private productsPerPage = 6;
-  private productCategories: TCategory[] = ["Dessert", "Breakfast", "Dinner"]
-  static contextType = CartContext;
-  declare context: ICartContextType; 
+  const [currentCategory, setCategory] = useState<TCategory>(productCategories[0])
+  const [currentPage, setPage] = useState(1)
 
-  constructor(props: ProductListProps) {
-    super(props);
-    this.state = {
-      currentCategory: this.productCategories[0],
-      currentPage: 1,
-    };
+  const getFilteredProducts = () => {
+    return products.filter((product) => product.category === currentCategory);
   }
+
+  const getPaginatedProducts = ()  => {
+    return filteredProducts.slice(0, currentPage * productsPerPage);
+  }
+
+  const filteredProducts = getFilteredProducts();
+  const paginatedProducts = getPaginatedProducts();
   
-  protected setCategory = (category: TCategory) => {
-    this.setState({ currentCategory: category, currentPage: 1 });
-  };
 
-  protected loadMoreProducts = () => {
-    this.setState((prevState) => ({ currentPage: prevState.currentPage + 1 }));
-  };
-
-  get filteredProducts() {
-    return this.props.products.filter(
-      (product: IProduct) => product.category === this.state.currentCategory
-    );
-  }
-
-  get paginatedProducts() {
-    return this.filteredProducts.slice(0, this.state.currentPage * this.productsPerPage);
-  }
-
-  render(): React.ReactNode {
-    const { addToCart } = this.context;
-    return (
-      <div className={styles.container}>
-        <div className={styles.container__categories}>
-          {this.productCategories.map((category) => 
-            <Button 
-              variant={this.state.currentCategory == category ? "primary" : "outline"} 
-              onClick={() => {
-                this.setCategory(category); 
-              }}
-              key={category}
-              // According to tt i need to disable it
-              disabled={true} 
-              >
-              {category}
-            </Button>
-            )
-          }
-        </div>
-        <div className={styles.container__products}>
-          {this.paginatedProducts.map((product: IProduct) => (
-            <ProductCard addToCart={addToCart} product={product} key={product.id} />
-          ))}
-        </div>
-        <Button 
-          onClick={this.loadMoreProducts}
-          disabled={this.paginatedProducts.length >= this.filteredProducts.length}>
-          See more
-        </Button>
+  return (
+    <div className={styles.container}>
+      <div className={styles.container__categories}>
+        {productCategories.map((category) => 
+          <Button 
+            variant={currentCategory == category ? "primary" : "outline"} 
+            onClick={() => {
+              setCategory(category); 
+              setPage(1);
+            }}
+            key={category}
+            >
+            {category}
+          </Button>
+          )
+        }
       </div>
-    );
-  }
+      <div className={styles.container__products}>
+        {paginatedProducts.map((product: IProduct) => (
+          <ProductCard addToCart={addToCart} product={product} key={product.id} />
+        ))}
+      </div>
+      <Button 
+        onClick={() => setPage((v) => v + 1)}
+        disabled={paginatedProducts.length >= filteredProducts.length}>
+        See more
+      </Button>
+    </div>
+  );
 }
 
 export default ProductList;
