@@ -12,6 +12,7 @@ export default defineConfig({
       "@services": path.resolve(__dirname, "src/app/shared/services"),
       "@contexts": path.resolve(__dirname, "src/app/shared/contexts"),
       "@hooks": path.resolve(__dirname, "src/app/shared/hooks"),
+      "@utils": path.resolve(__dirname, "src/app/shared/utils"),
     },
   },
 });

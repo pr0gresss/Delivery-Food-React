@@ -14,6 +14,7 @@
       "@services" : ["app/shared/services"],
       "@contexts" : ["app/shared/contexts"],
       "@hooks" : ["app/shared/hooks"],
+      "@utils" : ["app/shared/utils"],
     },
 
     /* Bundler mode */

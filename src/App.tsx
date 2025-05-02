@@ -1,10 +1,11 @@
-import MenuPage from "@components/pages/MenuPage/MenuPage";
+import { HomePage, MenuPage } from "@components/pages";
 import { CartProvider } from "@contexts";
 
 const App = () => {
 	return (
 		<CartProvider>
-			<MenuPage/>
+			{/* <MenuPage/> */}
+			<HomePage/>
 		</CartProvider>
 	);
 }
