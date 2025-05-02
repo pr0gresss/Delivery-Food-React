@@ -12,8 +12,8 @@ export const useFetch = () => {
 	};
 
 	const fetchDataWithLogging = async <T>(url: string) => {
-    return await withLogging<T>(fetchData)(url);
-  }
-		
+		return await withLogging<T>(fetchData)(url);
+	};
+
 	return { fetchData, fetchDataWithLogging };
 };

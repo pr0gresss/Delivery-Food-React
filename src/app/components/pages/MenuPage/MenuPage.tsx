@@ -16,7 +16,7 @@ const MenuPage: React.FC = () => {
 	useEffect(() => {
 		setLoadingState(true);
 		fetchDataWithLogging<IProduct[]>('https://65de35f3dccfcd562f5691bb.mockapi.io/api/v1/meals')
-		.then(res => setProducts(res as IProduct[]))
+		.then(res => setProducts(res))
 		.catch(err => { throw Error(err.message); })
 		.finally(() => setLoadingState(false));
 	}, []);

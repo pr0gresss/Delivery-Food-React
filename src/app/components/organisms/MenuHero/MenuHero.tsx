@@ -6,27 +6,28 @@ const HomeHero: React.FC = () => {
 	return (
 		<StyledHeroContainer>
 			<StyledLeftHeroContainer>
-        <StyledContainerGap>
-          <StyledHeading>
-				  	Beautiful food & takeaway, <StyledCyanText>delivered </StyledCyanText>
-				  	to your door.
-				  </StyledHeading>
-				  <StyledParagraph>
-				  	Lorem Ipsum is simply dummy text of the printing and typesetting
-				  	industry. Lorem Ipsum has been the industry's standard dummy text ever
-				  	since the 1500.
-				  </StyledParagraph>
-        </StyledContainerGap>
 				<StyledContainerGap>
-          <StyledButton disabled>Place an order</StyledButton>
-				  <StyledRatingContainer>
-				  	<img src="src/assets/images/trustpilot-logo.svg" alt="" />
-				  	<p>
-				  		<StyledCyanText>4.8 out of 5 </StyledCyanText>
-				  		based on 2000+ reviews
-				  	</p>
-				  </StyledRatingContainer>
-        </StyledContainerGap>
+					<StyledHeading>
+						Beautiful food & takeaway,{' '}
+						<StyledCyanText>delivered </StyledCyanText>
+						to your door.
+					</StyledHeading>
+					<StyledParagraph>
+						Lorem Ipsum is simply dummy text of the printing and typesetting
+						industry. Lorem Ipsum has been the industry's standard dummy text
+						ever since the 1500.
+					</StyledParagraph>
+				</StyledContainerGap>
+				<StyledContainerGap>
+					<StyledButton disabled>Place an order</StyledButton>
+					<StyledRatingContainer>
+						<img src="src/assets/images/trustpilot-logo.svg" alt="" />
+						<p>
+							<StyledCyanText>4.8 out of 5 </StyledCyanText>
+							based on 2000+ reviews
+						</p>
+					</StyledRatingContainer>
+				</StyledContainerGap>
 			</StyledLeftHeroContainer>
 			<img src="src/assets/images/props/homepage-banner.svg" alt="" />
 		</StyledHeroContainer>
@@ -70,10 +71,10 @@ const StyledLeftHeroContainer = styled.div`
 	flex-flow: column;
 	flex: 1;
 	justify-content: center;
-  gap: 50px;
+	gap: 50px;
 	height: 100%;
 	align-items: flex-start;
-  max-width: 650px;
+	max-width: 650px;
 `;
 
 const StyledCyanText = styled.span`
@@ -85,29 +86,29 @@ const StyledRatingContainer = styled.div`
 	flex-flow: column;
 	gap: 10px;
 
-  img {
-    max-width: 110px;
-  }
+	img {
+		max-width: 110px;
+	}
 `;
 
 const StyledParagraph = styled.p`
-  color: var(--text-secondary);
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 24px;
-`
+	color: var(--text-secondary);
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 24px;
+`;
 
 const StyledContainerGap = styled.div`
-  display: flex;
-  flex-flow: column;
-  gap: 30px;
-`
+	display: flex;
+	flex-flow: column;
+	gap: 30px;
+`;
 
 const StyledHeading = styled.h1`
-  font-weight: 400;
-  font-size: 60px;
-  line-height: 60px;
-  letter-spacing: 2px;
-`
+	font-weight: 400;
+	font-size: 60px;
+	line-height: 60px;
+	letter-spacing: 2px;
+`;
 
 export default HomeHero;
