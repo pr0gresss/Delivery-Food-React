@@ -13,6 +13,7 @@
       "@components/*" : ["app/components/*"],
       "@services" : ["app/shared/services"],
       "@contexts" : ["app/shared/contexts"],
+      "@hooks" : ["app/shared/hooks"],
     },
 
     /* Bundler mode */
