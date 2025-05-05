@@ -1,20 +1,27 @@
 import React, { HTMLAttributes } from "react";
 import styles from "./TooltipElement.module.scss";
 
-export interface TooltipElementProps extends HTMLAttributes<HTMLElement> {
+interface TooltipElementProps extends HTMLAttributes<HTMLElement> {
   tooltipText: string,
 }
 
-const TooltipElement: React.FC<TooltipElementProps> = ({ tooltipText, children }) => {
+class TooltipElement extends React.Component<TooltipElementProps> {
+  public constructor(props: TooltipElementProps) {
+    super(props)
+  }
 
-  return (
-    <span className={styles.element}>
-      {children}
-      <div className={styles.element__tooltip}>
-        {tooltipText}
-      </div>
-    </span>
-  );
-};
+  public render(): React.ReactNode {
+    return (
+      <span 
+        className={styles.element}
+      >
+        {this.props.children}
+        <span className={styles.element__tooltip}>
+          {this.props.tooltipText}
+        </span>
+      </span>
+    );
+  }
+}
 
 export default TooltipElement;

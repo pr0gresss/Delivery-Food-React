@@ -30,11 +30,14 @@ a {
   --text-tetriary: #35B8BE;
   --text-gray: #7E828F4D;
 
-  --button-primary-bg: #35b8be;
   --button-primary-text: #FFFFFF;
+  --button-primary-text-disabled: #636363;
+  --button-primary-bg-disabled: #9fa6a7;
+  --button-primary-bg: #35b8be;
   --button-primary-bg-hover: #23cad3;
   --button-primary-bg-click: #57dee6;
   --button-primary-stroke-focus: #000;
+
 
   --button-outline-text: #222222;
   --button-outline-stroke: rgba(97, 114, 131, 0.2);

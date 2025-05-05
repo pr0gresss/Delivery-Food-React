@@ -41,7 +41,7 @@
     background-color: var(--button-primary-bg);
     color: var(--button-primary-text);
 
-    &:hover {
+    &:not(:disabled):not(:focus):hover {
       background-color: var(--button-primary-bg-hover);
 
       &:active {
@@ -49,9 +49,15 @@
       }
     }
 
-    &:focus {
+    &:focus-visible {
       transition: none;
       outline: 2px solid var(--button-primary-stroke-focus);
+    }
+
+    &:disabled {
+      background-color: var(--button-primary-bg-disabled);
+      color: var(--button-primary-text-disabled);
+      cursor: not-allowed;
     }
   }
 
@@ -60,16 +66,22 @@
     color: var(--button-outline-text);
     outline-color: var(--button-outline-stroke);
 
-    &:hover {
+    &:not(:disabled):not(:focus):hover {
       background-color: var(--button-outline-bg-hover);
       &:active {
         background-color: var(--button-outline-bg-click);
       }
     }
 
-    &:focus {
+    &:focus-visible {
       transition: none;
       outline: 2px solid var(--button-primary-stroke-focus);
+    }
+
+    &:disabled {
+      outline-color: var(--button-primary-bg-disabled);
+      color: var(--button-primary-text-disabled);
+      cursor: not-allowed;
     }
   }
 }
