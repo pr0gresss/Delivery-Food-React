@@ -3,26 +3,25 @@ import styles from './MenuPage.module.scss';
 import { TooltipElement } from '@components/atoms';
 import { useEffect, useState } from 'react';
 import { IProduct } from '@interfaces';
-import { MenuLayout } from '@components/templates';
+import { MainTemplate } from '@components/templates';
 import { useFetch } from '@hooks';
 
-const MenuPage: React.FC = () => {
+const MenuPage = () => {
 	const [isLoading, setLoadingState] = useState(false);
 	const [products, setProducts] = useState<IProduct[]>([]);
 
 	const { fetchDataWithLogging } = useFetch();
 
-
 	useEffect(() => {
 		setLoadingState(true);
 		fetchDataWithLogging<IProduct[]>('https://65de35f3dccfcd562f5691bb.mockapi.io/api/v1/meals')
-		.then(res => setProducts(res))
-		.catch(err => { throw Error(err.message); })
-		.finally(() => setLoadingState(false));
+			.then(res => setProducts(res))
+			.catch(err => { throw Error(err.message); })
+			.finally(() => setLoadingState(false));
 	}, []);
 
 	return (
-		<MenuLayout>
+		<MainTemplate>
 			<div className={styles.container}>
 				<div className={styles.container__header}>
 					<h1 className={styles.container__header__title}>Browse our menu</h1>
@@ -44,7 +43,7 @@ const MenuPage: React.FC = () => {
 					<ProductList products={products} />
 				)}
 			</div>
-		</MenuLayout>
+		</MainTemplate>
 	);
 };
 

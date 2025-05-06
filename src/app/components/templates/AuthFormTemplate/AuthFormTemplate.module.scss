@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-flow: column;
+  padding: 36px 68px 42px 68px;
+  outline: 1px solid var(--bg-accent-secondary);
+  border-radius: 6px;
+  max-width: 800px;
+  width: 100%;
+  background-color: var(--bg-main);
+
+  &__form {
+    display: flex;
+    flex-flow: column;
+    gap: 30px;
+    width: 100%;
+  }
+}
+
+
+.error {
+  color: red;
+  text-align: center;
+}

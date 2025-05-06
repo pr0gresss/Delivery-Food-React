@@ -1,8 +1,7 @@
 import { Button } from '@components/atoms';
-import React from 'react';
 import styled from 'styled-components';
 
-const HomeHero: React.FC = () => {
+const HomeHero = () => {
 	return (
 		<StyledHeroContainer>
 			<StyledLeftHeroContainer>

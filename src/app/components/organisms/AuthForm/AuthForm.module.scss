@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  gap: 50px;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background-color: var(--bg-secondary);
+    transform: skewY(-3deg);
+    transform-origin: top right;
+    height: 100%;
+  }
+
+  h1 {
+    color: var(--text-tetriary);
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 55px;
+  }
+}
