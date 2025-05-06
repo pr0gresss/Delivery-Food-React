@@ -18,7 +18,9 @@ const Footer = () => (
 						</h4>
 						<div className={styles.footer__top__table__column__content}>
 							{column.columnContent.map((link, index) => (
-								<a href={link.link} key={index}>{link.title}</a>
+								<a href={link.link} key={index}>
+									{link.title}
+								</a>
 							))}
 						</div>
 					</div>
@@ -33,7 +35,7 @@ const Footer = () => (
 				</div>
 				<div className={styles.footer__bottom__information__socials}>
 					{footerSocialLinks.map((link, index) => (
-						<SocialButton link={link.link} iconName={link.icon} key={index}/>
+						<SocialButton link={link.link} iconName={link.icon} key={index} />
 					))}
 				</div>
 			</div>
