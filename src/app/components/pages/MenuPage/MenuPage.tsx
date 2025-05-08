@@ -1,25 +1,27 @@
 import { ProductList } from '@components/organisms';
 import styles from './MenuPage.module.scss';
 import { TooltipElement } from '@components/atoms';
-import { getProducts } from '@services';
 import { useEffect, useState } from 'react';
 import { IProduct } from '@interfaces';
-import { MenuLayout } from '@components/templates';
+import { MainTemplate } from '@components/templates';
+import { useFetch } from '@hooks';
 
-const MenuPage: React.FC = () => {
+const MenuPage = () => {
 	const [isLoading, setLoadingState] = useState(false);
 	const [products, setProducts] = useState<IProduct[]>([]);
 
+	const { fetchDataWithLogging } = useFetch();
+
 	useEffect(() => {
-    setLoadingState(true)
-		getProducts()
+		setLoadingState(true);
+		fetchDataWithLogging<IProduct[]>('https://65de35f3dccfcd562f5691bb.mockapi.io/api/v1/meals')
 			.then(res => setProducts(res))
-			.catch(err => { throw Error(err.message) })
+			.catch(err => { throw Error(err.message); })
 			.finally(() => setLoadingState(false));
 	}, []);
 
 	return (
-		<MenuLayout>
+		<MainTemplate>
 			<div className={styles.container}>
 				<div className={styles.container__header}>
 					<h1 className={styles.container__header__title}>Browse our menu</h1>
@@ -30,14 +32,18 @@ const MenuPage: React.FC = () => {
 					</p>
 				</div>
 				{isLoading ? (
-					<div className={styles.container__products__empty}>Loading products...</div>
+					<div className={styles.container__products__empty}>
+						Loading products...
+					</div>
 				) : products.length === 0 ? (
-					<div className={styles.container__products__empty}>No products available</div>
+					<div className={styles.container__products__empty}>
+						No products available
+					</div>
 				) : (
 					<ProductList products={products} />
 				)}
 			</div>
-		</MenuLayout>
+		</MainTemplate>
 	);
 };
 

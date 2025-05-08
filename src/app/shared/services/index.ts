@@ -1,1 +1,1 @@
-export * from "./ProductService";
+export * from "./firebase.service";

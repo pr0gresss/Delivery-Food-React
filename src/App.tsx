@@ -1,11 +1,11 @@
-import MenuPage from "@components/pages/MenuPage/MenuPage";
-import { CartProvider } from "@contexts";
+import { AuthPage } from "@components/pages";
+import { AuthProvider } from "@contexts";
 
-const App = () => {
+function App() {
 	return (
-		<CartProvider>
-			<MenuPage/>
-		</CartProvider>
+		<AuthProvider>
+			<AuthPage/>
+		</AuthProvider>
 	);
 }
 

@@ -6,7 +6,6 @@ import { useCart } from '@hooks';
 
 interface ProductCardProps {
 	product: IProduct;
-	addToCart: (product: IProduct, amount: number) => void;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
