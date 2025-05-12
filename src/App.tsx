@@ -1,10 +1,10 @@
-import { HomePage } from "@components/pages";
+import { MenuPage } from "@components/pages";
 import { CartProvider } from "@contexts";
 
 const App = () => {
 	return (
 		<CartProvider>
-			<HomePage/>
+			<MenuPage/>
 		</CartProvider>
 	);
 }
