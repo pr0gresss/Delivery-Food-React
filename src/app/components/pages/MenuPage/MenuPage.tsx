@@ -1,7 +1,7 @@
 import { ProductList } from "@components/organisms";
 import styles from "./MenuPage.module.scss";
 import { TooltipElement } from "@components/atoms";
-import { MainLayout } from "@components/templates";
+import { MainTemplate } from "@components/templates";
 import { useFetch } from "@hooks";
 import { useEffect } from "react";
 import { IProduct } from "@interfaces";
@@ -16,7 +16,7 @@ const MenuPage = () => {
   }, [fetchDataWithLogging]);
 
   return (
-    <MainLayout>
+    <MainTemplate>
       <div className={styles.container}>
         <div className={styles.container__header}>
           <h1 className={styles.container__header__title}>Browse our menu</h1>
@@ -36,7 +36,7 @@ const MenuPage = () => {
           data && <ProductList products={data} />
         )}
       </div>
-    </MainLayout>
+    </MainTemplate>
   );
 };
 
