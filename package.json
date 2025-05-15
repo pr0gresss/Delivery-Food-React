@@ -17,6 +17,11 @@
 		"react-dom": "^19.0.0",
 		"styled-components": "^6.1.17"
 	},
+	"prettier": {
+		"singleQuote": false,
+		"printWidth": 120,
+		"jsxSingleQuote": false
+	},
 	"devDependencies": {
 		"@eslint/js": "^9.21.0",
 		"@types/node": "^22.13.9",
