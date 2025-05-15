@@ -16,8 +16,10 @@ export const useFetch = <T>(url: string) => {
 
       const result: T = await response.json();
       setData(result);
+      return result;
     } catch (err: unknown) {
       setError(err as Error);
+      throw err;
     } finally {
       setLoading(false);
     }
