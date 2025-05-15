@@ -1,11 +1,8 @@
-import MenuPage from "@components/pages/MenuPage/MenuPage";
-import { CartProvider } from "@contexts";
+import { AuthPage } from "@components/pages";
 
-const App = () => {
+function App() {
 	return (
-		<CartProvider>
-			<MenuPage/>
-		</CartProvider>
+			<AuthPage/>
 	);
 }
 

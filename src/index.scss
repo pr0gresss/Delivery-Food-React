@@ -20,8 +20,10 @@ a {
   font-family: Inter;
   font-weight: 400;
 
-  /*Colors*/
+  /* Colors */
   --bg-main: #FFFFFF;
+  --bg-accent-main: #35B8BE;
+  --bg-accent-secondary: #35B8BE26;
   --bg-secondary: #F5FBFC;
   --bg-gray: #7E828F4D;
 
@@ -30,6 +32,7 @@ a {
   --text-tetriary: #35B8BE;
   --text-gray: #7E828F4D;
 
+  /* Button */
   --button-primary-text: #FFFFFF;
   --button-primary-text-disabled: #636363;
   --button-primary-bg-disabled: #9fa6a7;
@@ -38,13 +41,13 @@ a {
   --button-primary-bg-click: #57dee6;
   --button-primary-stroke-focus: #000;
 
-
   --button-outline-text: #222222;
   --button-outline-stroke: rgba(97, 114, 131, 0.2);
   --button-outline-stroke-focus: #000;
   --button-outline-bg-hover: #23cad34f;
   --button-outline-bg-click: #57dfe641;
-  
+
+  /* Input */
   --input-primary-text: #000000;
   --input-primary-bg: #FAFAFA;
   --input-primary-bg-hover: #FAFAFA;
@@ -52,4 +55,3 @@ a {
   --input-primary-stroke-hover: #35b8be;
   --input-primary-stroke-focus: #000;
 }
-

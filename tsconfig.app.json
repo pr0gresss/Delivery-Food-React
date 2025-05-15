@@ -11,9 +11,10 @@
       "@interfaces": ["app/shared/interfaces"],
       "@types": ["app/shared/types"],
       "@components/*" : ["app/components/*"],
-      "@services" : ["app/shared/services"],
       "@contexts" : ["app/shared/contexts"],
       "@hooks" : ["app/shared/hooks"],
+      "@utils" : ["app/shared/utils"],
+      "@services": ["app/shared/services"],
     },
 
     /* Bundler mode */
