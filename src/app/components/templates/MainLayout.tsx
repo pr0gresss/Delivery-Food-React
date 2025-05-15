@@ -1,14 +1,14 @@
 import { Footer, Header } from '@components/organisms';
 import React from 'react';
 
-const MenuLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
+const MainLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
 	return (
 		<>
-			<Header />
+			<Header/>
 			{children}
-			<Footer />
+			<Footer/>
 		</>
 	);
 };
 
-export default MenuLayout;
+export default MainLayout;
