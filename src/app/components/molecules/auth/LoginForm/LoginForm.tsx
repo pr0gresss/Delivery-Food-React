@@ -4,19 +4,22 @@ import React, { useState } from 'react';
 import { useAuth, useFormState } from '@hooks';
 import { AuthFormTemplate } from '@components/templates';
 import { IAuthFormProps } from '../IAuthFormProps';
+import { validateEmail, validateLength, validatePasswordStrength } from '@utils';
 
 const LoginForm: React.FC<IAuthFormProps> = ({ toggleAuthMode }) => {
-	const [form, setField, resetForm] = useFormState({ email: '', password: '' });
+	const [form, setField, resetForm, errors, validateAll] = useFormState({ email: '', password: '' }, { email: [validateEmail], password: [validateLength(), validatePasswordStrength]});
 	const [isLoading, setLoadingState] = useState<boolean>(false);
-	const [error, setError] = useState<Error | null>(null);
 
 	const { logIn } = useAuth();
 
 	const onLogIn = (e: React.FormEvent) => {
 		e.preventDefault();
+
+		if(!validateAll()) return;
+
 		setLoadingState(true);
 		logIn(form.email, form.password)
-			.catch(err => setError(err))
+			.catch(err => console.error(err))
 			.finally(() => {
 				resetForm();
 				setLoadingState(false);
@@ -24,7 +27,7 @@ const LoginForm: React.FC<IAuthFormProps> = ({ toggleAuthMode }) => {
 	};
 
 	return (
-		<AuthFormTemplate error={error} onSubmit={onLogIn} isLoading={isLoading}>
+		<AuthFormTemplate onSubmit={onLogIn}  isLoading={isLoading}>
 			<div className={styles.container__form__input}>
 				<label htmlFor="email">Email</label>
 				<Input
@@ -32,6 +35,7 @@ const LoginForm: React.FC<IAuthFormProps> = ({ toggleAuthMode }) => {
 					id="email"
 					value={form.email}
 					onChange={e => setField('email', e.target.value)}
+					errors={errors.email}
 					placeholder="Enter your email"
 					disabled={isLoading}
 					required
@@ -45,6 +49,7 @@ const LoginForm: React.FC<IAuthFormProps> = ({ toggleAuthMode }) => {
 					value={form.password}
 					onChange={e => setField('password', e.target.value)}
 					placeholder="Enter your password"
+					errors={errors.password}
 					disabled={isLoading}
 					required
 				/>
