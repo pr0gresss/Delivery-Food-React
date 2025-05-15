@@ -1,5 +1,5 @@
-import { createContext, useState, ReactNode, useEffect } from 'react';
-import { ICartItem, IProduct } from '@interfaces';
+import { createContext, useState, ReactNode, useEffect } from "react";
+import { ICartItem, IProduct } from "@interfaces";
 
 export interface ICartContextType {
   cart: ICartItem[];
@@ -26,7 +26,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     }
     return [];
   };
-  
+
   const [cart, setCart] = useState<ICartItem[]>(loadCartFromStorage);
 
   useEffect(() => {
@@ -35,13 +35,9 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
   const addToCart = (product: IProduct, amount: number = 1) => {
     setCart((prev) => {
-      const existing = prev.find(item => item.product.id === product.id);
+      const existing = prev.find((item) => item.product.id === product.id);
       if (existing) {
-        return prev.map(item =>
-          item.product.id === product.id
-            ? { ...item, amount: item.amount + amount }
-            : item
-        );
+        return prev.map((item) => (item.product.id === product.id ? { ...item, amount: item.amount + amount } : item));
       } else {
         return [...prev, { product, amount }];
       }
@@ -49,7 +45,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   };
 
   const removeFromCart = (productId: string) => {
-    setCart((prev) => prev.filter(item => item.product.id !== productId));
+    setCart((prev) => prev.filter((item) => item.product.id !== productId));
   };
 
   const clearCart = () => {
@@ -61,11 +57,18 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, clearCart, totalItems, totalPrice }}
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        clearCart,
+        totalItems,
+        totalPrice,
+      }}
     >
       {children}
     </CartContext.Provider>
   );
 };
 
-export {CartContext};
+export { CartContext };

@@ -1,4 +1,4 @@
-import MenuPage from "@components/pages/MenuPage/MenuPage";
+import { MenuPage } from "@components/pages";
 import { CartProvider } from "@contexts";
 
 const App = () => {
