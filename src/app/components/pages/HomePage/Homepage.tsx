@@ -1,11 +1,11 @@
 import { HomeHero } from "@components/organisms";
-import { MainLayout } from "@components/templates";
+import { MainTemplate } from "@components/templates";
 
 const HomePage = () => {
   return (
-    <MainLayout>
+    <MainTemplate>
       <HomeHero></HomeHero>
-    </MainLayout>
+    </MainTemplate>
   );
 }
 
