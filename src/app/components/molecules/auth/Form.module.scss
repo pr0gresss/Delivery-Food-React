@@ -1,0 +1,38 @@
+.container {
+  &__form {
+    &__input {
+      display: flex;
+      flex-flow: row;
+      gap: 30px;
+      align-items: center;
+      justify-content: space-between;
+
+      input {
+        max-width: 570px;
+      }
+
+      label {
+        font-size: 18px;
+        line-height: 20px;
+        font-weight: 400;
+        min-width: 70px;
+      }
+    }
+
+    &__buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      gap: 30px;
+
+      button {
+        max-width: 150px;
+      }
+
+      a {
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,56 +1,72 @@
-
 input {
   border: 0;
   outline: 1px solid transparent;
   background: transparent;
 }
 
-.input {
+.wrapper {
   display: flex;
-  align-items: center;
-  justify-content: stretch;
-  padding: 16px 20px;
-  border-radius: 4px;
-  gap: 10px;
-  transition: 0.3s ease-in-out;
-  transition-property: color, background, outline;
+  flex-flow: column;
+  gap: 5px;
+  width: 100%;
 
-  &[type=number] {
-    text-align: center;
-  }
+  &__input {
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+    padding: 16px 20px;
+    border-radius: 4px;
+    width: 100%;
+    gap: 10px;
+    transition: 0.3s ease-in-out;
+    transition-property: color, background, outline;
 
-  /*Sizes*/
-  &.small {
-    padding: 8px 12px;
-    font-size: 16px;
-    line-height: 20px;
-  }
-
-  &.medium {
-    padding: 14px 16px;
-    font-size: 16px;
-    line-height: 24px;
-  }
-
-  &.large {
-    padding: 16px;
-    font-size: 18px;
-    line-height: 26px;
-  }
-
-  &.primary {
-    background-color: var(--input-primary-bg);
-    outline-color: var(--input-primary-stroke);
-    color: var(--input-primary-text);
-
-    &:hover {
-      background-color: var(--input-primary-bg-hover);
-      outline-color: var(--input-primary-stroke-hover);
+    &[type="number"] {
+      text-align: center;
     }
 
-    &:focus {
-      transition: none;
-      outline: 2px solid var(--input-primary-stroke-focus);
+    /*States*/
+    &.error {
+      outline-color: red !important;
     }
+
+    /*Sizes*/
+    &.small {
+      padding: 8px 12px;
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    &.medium {
+      padding: 14px 16px;
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    &.large {
+      padding: 16px;
+      font-size: 18px;
+      line-height: 26px;
+    }
+
+    &.primary {
+      background-color: var(--input-primary-bg);
+      outline-color: var(--input-primary-stroke);
+      color: var(--input-primary-text);
+
+      &:hover {
+        background-color: var(--input-primary-bg-hover);
+        outline-color: var(--input-primary-stroke-hover);
+      }
+
+      &:focus {
+        transition: none;
+        outline: 2px solid var(--input-primary-stroke-focus);
+      }
+    }
+  }
+
+  &__errorMessage {
+    color: red;
   }
 }
