@@ -1,8 +1,7 @@
 import { Button } from '@components/atoms';
-import React from 'react';
 import styled from 'styled-components';
 
-const HomeHero: React.FC = () => {
+const HomeHero = () => {
 	return (
 		<StyledHeroContainer>
 			<StyledLeftHeroContainer>
@@ -42,24 +41,19 @@ const StyledHeroContainer = styled.div`
 	justify-content: center;
 	height: 100%;
 	padding: 100px 120px;
-  z-index: 1;
-  position: relative;
-  overflow: hidden;
-  background: var(--bg-main);
+	z-index: 1;
+	position: relative;
+	overflow: hidden;
+	background: var(--bg-main);
 
-::before {
-   content: "";
-  position: absolute;
-  inset: 0;
-  background-color: var(--bg-secondary);
-  clip-path: polygon(
-    0 0,
-    100% 0%,
-    100% 100%,
-    20% 70%,
-    9% 30% 
-  );
-  z-index: -1; 
+	::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background-color: var(--bg-secondary);
+		clip-path: polygon(0 0, 100% 0%, 100% 100%, 20% 70%, 9% 30%);
+		z-index: -1;
+	}
 `;
 
 const StyledButton = styled(Button)`

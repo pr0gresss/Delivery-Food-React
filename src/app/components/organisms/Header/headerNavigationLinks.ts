@@ -1,23 +1,23 @@
 export interface INavItem {
   label: string,
   link: string,
+  authRequired: boolean,
 }
 
 export const headerNavigationLinks: INavItem[] = [
   {
     label: "Home",
-    link: "/home"
+    link: "/home",
+    authRequired: false,
   },
   {
     label: "Menu",
-    link: "/menu"
+    link: "/menu",
+    authRequired: true,
   },
   {
     label: "Company",
-    link: "/company"
+    link: "/company",
+    authRequired: false,
   },
-  {
-    label: "Login",
-    link: "/sign-in"
-  }
 ];
