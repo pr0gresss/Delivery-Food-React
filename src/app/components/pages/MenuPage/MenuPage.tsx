@@ -2,18 +2,22 @@ import { ProductList } from "@components/organisms";
 import styles from "./MenuPage.module.scss";
 import { TooltipElement } from "@components/atoms";
 import { MainTemplate } from "@components/templates";
-import { useFetch } from "@hooks";
 import { useEffect } from "react";
 import { IProduct } from "@interfaces";
+import { fetchTypedData } from "@slices";
+import { useSelector } from "react-redux";
+import { useAppDispatch } from "@store";
+import { selectFetchResult } from "@selectors";
+
+const fetchProducts = fetchTypedData<IProduct[]>();
 
 const MenuPage = () => {
-  const { data, error, loading, fetchDataWithLogging } = useFetch<IProduct[]>(
-    "https://65de35f3dccfcd562f5691bb.mockapi.io/api/v1/meals"
-  );
+  const dispatch = useAppDispatch();
+  const { data, loading, error } = useSelector(selectFetchResult("products"));
 
   useEffect(() => {
-    fetchDataWithLogging();
-  }, [fetchDataWithLogging]);
+    dispatch(fetchProducts({ url: "https://65de35f3dccfcd562f5691bb.mockapi.io/api/v1/meals", key: "products" }));
+  }, [dispatch]);
 
   return (
     <MainTemplate>
@@ -29,7 +33,7 @@ const MenuPage = () => {
         {loading ? (
           <div className={styles.container__products__empty}>Loading products...</div>
         ) : error ? (
-          <div className={styles.container__products__empty}>Service error</div>
+          <div className={styles.container__products__empty}>{error}</div>
         ) : data && data.length === 0 ? (
           <div className={styles.container__products__empty}>No products available</div>
         ) : (

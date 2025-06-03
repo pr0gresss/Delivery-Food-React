@@ -1,2 +1,3 @@
 export * from "./cartSelectors";
-export * from "./authSelector";
+export * from "./authSelectors";
+export * from "./fetchSelectors";
