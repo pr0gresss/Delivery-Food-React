@@ -11,10 +11,12 @@
       "@interfaces": ["app/shared/interfaces"],
       "@types": ["app/shared/types"],
       "@components/*" : ["app/components/*"],
-      "@contexts" : ["app/shared/contexts"],
       "@hooks" : ["app/shared/hooks"],
       "@utils" : ["app/shared/utils"],
       "@services": ["app/shared/services"],
+      "@slices": ["app/shared/slices"],
+      "@selectors": ["app/shared/selectors"],
+      "@store": ["app/shared/store"]
     },
 
     /* Bundler mode */

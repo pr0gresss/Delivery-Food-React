@@ -1,16 +1,18 @@
 import { Input, Button } from "@components/atoms";
 import styles from "../Form.module.scss";
-import { useAuth, useFormState } from "@hooks";
+import { useFormState } from "@hooks";
 import React, { useState } from "react";
 import { IAuthFormProps } from "../IAuthFormProps";
 import { AuthFormTemplate } from "@components/templates";
 import { validateEmail, validateLength, validatePasswordStrength } from "@utils";
+import { useAppDispatch } from "@store";
+import { signUp } from "@slices";
 
 const SignUpForm: React.FC<IAuthFormProps> = ({ toggleAuthMode }) => {
   const [form, setField, resetForm, errors, validateAll] = useFormState({ email: "", password: "" }, {email: [validateEmail], password: [validateLength(), validatePasswordStrength]});
   const [isLoading, setLoadingState] = useState<boolean>(false);
 
-  const { signUp } = useAuth();
+  const dispatch = useAppDispatch();
 
   const onSignUp = (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,12 +20,17 @@ const SignUpForm: React.FC<IAuthFormProps> = ({ toggleAuthMode }) => {
     if (!validateAll()) return;
 
     setLoadingState(true);
-    signUp(form.email, form.password)
+    
+    const formData = {
+      email: form.email,
+      password: form.password,
+    };
+
+    dispatch(signUp(formData))
+      .unwrap()
+      .then(() => resetForm())
       .catch((err) => console.error(err))
-      .finally(() => {
-        resetForm();
-        setLoadingState(false);
-      });
+      .finally(() => setLoadingState(false));
   };
 
   return (

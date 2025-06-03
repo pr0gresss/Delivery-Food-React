@@ -1,16 +1,18 @@
 import { Input, Button } from "@components/atoms";
 import styles from "../Form.module.scss";
-import { useAuth, useFormState } from "@hooks";
+import { useFormState } from "@hooks";
 import React, { useState } from "react";
 import { AuthFormTemplate } from "@components/templates";
 import { IAuthFormProps } from "../IAuthFormProps";
 import { validateEmail } from "@utils";
+import { resetPassword } from "@slices";
+import { useAppDispatch } from "@store";
 
 const ResetPasswordForm: React.FC<IAuthFormProps> = ({ toggleAuthMode }) => {
   const [form, setField, resetForm, errors, validateAll] = useFormState({ email: "" }, { email: [validateEmail] });
   const [isLoading, setLoadingState] = useState<boolean>(false);
 
-  const { resetPassword } = useAuth();
+  const dispatch = useAppDispatch();
 
   const onResetPassword = (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,12 +20,18 @@ const ResetPasswordForm: React.FC<IAuthFormProps> = ({ toggleAuthMode }) => {
     if (!validateAll()) return;
 
     setLoadingState(true);
-    resetPassword(form.email)
-      .catch((err) => console.error(err))
-      .finally(() => {
-        resetForm();
-        setLoadingState(false);
-      });
+
+    dispatch(resetPassword(form.email))
+      .unwrap()
+      .then(() => resetForm())
+      .catch((err: unknown) => {
+        if (err instanceof Error) {
+          console.error("Reset password error:", err.message);
+        } else {
+          console.error("Reset password error:", err);
+        }
+      })
+      .finally(() => setLoadingState(false));
   };
 
   return (

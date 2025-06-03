@@ -1,16 +1,18 @@
-import { Button, Input } from '@components/atoms';
-import styles from '../Form.module.scss';
-import React, { useState } from 'react';
-import { useAuth, useFormState } from '@hooks';
-import { AuthFormTemplate } from '@components/templates';
-import { IAuthFormProps } from '../IAuthFormProps';
-import { validateEmail, validateLength, validatePasswordStrength } from '@utils';
+import { Button, Input } from "@components/atoms";
+import styles from "../Form.module.scss";
+import React, { useState } from "react";
+import { useFormState } from "@hooks";
+import { AuthFormTemplate } from "@components/templates";
+import { IAuthFormProps } from "../IAuthFormProps";
+import { validateEmail, validateLength, validatePasswordStrength } from "@utils"
+import { useAppDispatch } from "@store";
+import { logIn } from "@slices";
 
 const LoginForm: React.FC<IAuthFormProps> = ({ toggleAuthMode }) => {
 	const [form, setField, resetForm, errors, validateAll] = useFormState({ email: '', password: '' }, { email: [validateEmail], password: [validateLength(), validatePasswordStrength]});
 	const [isLoading, setLoadingState] = useState<boolean>(false);
 
-	const { logIn } = useAuth();
+	const dispatch = useAppDispatch();
 
 	const onLogIn = (e: React.FormEvent) => {
 		e.preventDefault();
@@ -18,12 +20,16 @@ const LoginForm: React.FC<IAuthFormProps> = ({ toggleAuthMode }) => {
 		if(!validateAll()) return;
 
 		setLoadingState(true);
-		logIn(form.email, form.password)
-			.catch(err => console.error(err))
-			.finally(() => {
-				resetForm();
-				setLoadingState(false);
-			});
+
+		const formData = {
+			email: form.email,
+			password: form.password,
+		}
+
+		dispatch(logIn(formData))
+			.unwrap().then(() => resetForm())
+			.catch((err) => console.error(err))
+			.finally(() => setLoadingState(false));
 	};
 
 	return (
