@@ -1,20 +1,10 @@
 import { ICartItem } from "@interfaces";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { loadCartFromStorage, saveCartToStorage } from "@utils";
 
 interface ICartState {
   items: ICartItem[];
 }
-
-const CART_KEY = "cart_items";
-
-const loadCartFromStorage = (): ICartItem[] => {
-  const stored = localStorage.getItem(CART_KEY);
-  return stored ? JSON.parse(stored) : [];
-};
-
-const saveCartToStorage = (cart: ICartItem[]) => {
-  localStorage.setItem(CART_KEY, JSON.stringify(cart));
-};
 
 const initialState: ICartState = {
   items: loadCartFromStorage(),

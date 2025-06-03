@@ -1,7 +1,7 @@
 import { Button } from '@components/atoms';
 import styles from './CartButton.module.scss';
 import { useSelector } from 'react-redux';
-import { selectTotalItems } from '@selectors';
+import { selectTotalItems } from '@features/cart';
 
 const CartButton = () => {
 	const totalItems = useSelector(selectTotalItems);

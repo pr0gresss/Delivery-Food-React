@@ -1,6 +1,6 @@
 import { AuthPage } from "@components/pages";
+import { setUser } from "@features/auth";
 import { auth } from "@services";
-import { setUser } from "@slices";
 import { useAppDispatch } from "@store";
 import { useEffect } from "react";
 

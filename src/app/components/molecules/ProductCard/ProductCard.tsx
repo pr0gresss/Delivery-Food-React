@@ -3,7 +3,7 @@ import styles from "./ProductCard.module.scss";
 import { Button, Input } from "@components/atoms";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addToCart } from "@slices";
+import { addToCart } from "@features/cart";
 
 interface ProductCardProps {
 	product: IProduct;

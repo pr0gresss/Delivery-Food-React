@@ -6,7 +6,7 @@ import { IAuthFormProps } from "../IAuthFormProps";
 import { AuthFormTemplate } from "@components/templates";
 import { validateEmail, validateLength, validatePasswordStrength } from "@utils";
 import { useAppDispatch } from "@store";
-import { signUp } from "@slices";
+import { signUp } from "@features/auth";
 
 const SignUpForm: React.FC<IAuthFormProps> = ({ toggleAuthMode }) => {
   const [form, setField, resetForm, errors, validateAll] = useFormState({ email: "", password: "" }, {email: [validateEmail], password: [validateLength(), validatePasswordStrength]});

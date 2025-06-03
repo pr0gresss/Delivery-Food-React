@@ -4,10 +4,9 @@ import { TooltipElement } from "@components/atoms";
 import { MainTemplate } from "@components/templates";
 import { useEffect } from "react";
 import { IProduct } from "@interfaces";
-import { fetchTypedData } from "@slices";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "@store";
-import { selectFetchResult } from "@selectors";
+import { fetchTypedData, selectFetchResult } from "@features/fetch";
 
 const fetchProducts = fetchTypedData<IProduct[]>();
 

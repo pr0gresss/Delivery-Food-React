@@ -5,8 +5,8 @@ import React, { useState } from "react";
 import { AuthFormTemplate } from "@components/templates";
 import { IAuthFormProps } from "../IAuthFormProps";
 import { validateEmail } from "@utils";
-import { resetPassword } from "@slices";
 import { useAppDispatch } from "@store";
+import { resetPassword } from "@features/auth";
 
 const ResetPasswordForm: React.FC<IAuthFormProps> = ({ toggleAuthMode }) => {
   const [form, setField, resetForm, errors, validateAll] = useFormState({ email: "" }, { email: [validateEmail] });

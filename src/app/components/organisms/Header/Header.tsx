@@ -2,10 +2,9 @@ import styles from "./Header.module.scss";
 import { headerNavigationLinks } from "./headerNavigationLinks";
 import { Button } from "@components/atoms";
 import { CartButton } from "@components/molecules";
+import { selectCurrentUser, logOut } from "@features/auth";
 import { useAppDispatch } from "@store";
 import { useSelector } from "react-redux";
-import { selectCurrentUser } from "@selectors";
-import { logOut } from "@slices";
 
 const Header = () => {
 	const dispatch = useAppDispatch();

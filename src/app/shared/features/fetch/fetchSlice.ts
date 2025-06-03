@@ -1,29 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-interface IFetchState<T> {
+export interface IFetchState<T> {
   data: T;
   error: string | null;
   loading: boolean;
 }
 
-interface IFetchArgs {
+export interface IFetchArgs {
   url: string;
   key: string;
 }
 
-interface IFetchRootState {
+export interface IFetchRootState {
   [key: string]: IFetchState<any>;
 }
 
-export const fetchTypedData = <T>() =>
-  createAsyncThunk<T, IFetchArgs>("fetch/fetchData", async ({ url }: IFetchArgs) => {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error("Network error");
-    return (await res.json()) as T;
-  });
-
-  
 export const emptyState = { date: null, error: null, loading: null };
 const initialState: IFetchRootState = {};
 

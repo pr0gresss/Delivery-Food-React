@@ -14,9 +14,8 @@
       "@hooks" : ["app/shared/hooks"],
       "@utils" : ["app/shared/utils"],
       "@services": ["app/shared/services"],
-      "@slices": ["app/shared/slices"],
-      "@selectors": ["app/shared/selectors"],
-      "@store": ["app/shared/store"]
+      "@store": ["app/shared/store"],
+      "@features/*": ["app/shared/features/*"]
     },
 
     /* Bundler mode */
