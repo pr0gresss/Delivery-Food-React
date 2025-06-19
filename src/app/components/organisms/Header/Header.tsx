@@ -1,7 +1,7 @@
 import styles from "./Header.module.scss";
 import { headerNavigationLinks } from "./headerNavigationLinks";
 import { Button } from "@components/atoms";
-import { CartButton } from "@components/molecules";
+import { CartButton, ThemeButton } from "@components/molecules";
 import { selectCurrentUser, logOut } from "@features/auth";
 import { useAppDispatch } from "@store";
 import { useSelector } from "react-redux";
@@ -32,6 +32,7 @@ const Header = () => {
 						))}
 				</div>
 				<div className={styles.header__navigation__buttons}>
+					<ThemeButton/>
 					{user ? (
 						<>
 							<CartButton />
