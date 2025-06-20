@@ -1,7 +1,7 @@
-import { AuthPage } from "@components/pages";
 import { setUser } from "@features/auth";
 import { auth } from "@services";
 import { useAppDispatch } from "@store";
+import { AppRoutes } from "@routes";
 import { useEffect } from "react";
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
     return () => unsubscribe();
   }, [dispatch]);
 
-  return <AuthPage></AuthPage>;
+  return <AppRoutes/>;
 }
 
 export default App;
