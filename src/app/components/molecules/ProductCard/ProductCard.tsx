@@ -1,20 +1,21 @@
-import { IProduct } from '@interfaces';
-import styles from './ProductCard.module.scss';
-import { Button, Input } from '@components/atoms';
-import React, { useState } from 'react';
-import { useCart } from '@hooks';
+import { IProduct } from "@interfaces";
+import styles from "./ProductCard.module.scss";
+import { Button, Input } from "@components/atoms";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@features/cart";
 
 interface ProductCardProps {
 	product: IProduct;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-	const { addToCart } = useCart();
 	const [amount, setAmount] = useState(1);
+	const dispatch = useDispatch();
 
 	const handleAddToCart = (e: React.FormEvent) => {
 		e.preventDefault();
-		addToCart(product, amount);
+		dispatch(addToCart({ product, amount }));
     setAmount(1);
 	};
 

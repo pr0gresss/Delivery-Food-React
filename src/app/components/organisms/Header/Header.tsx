@@ -1,11 +1,14 @@
-import styles from './Header.module.scss';
-import { headerNavigationLinks } from './headerNavigationLinks';
-import { Button } from '@components/atoms';
-import { useAuth } from '@hooks';
-import { CartButton } from '@components/molecules';
+import styles from "./Header.module.scss";
+import { headerNavigationLinks } from "./headerNavigationLinks";
+import { Button } from "@components/atoms";
+import { CartButton } from "@components/molecules";
+import { selectCurrentUser, logOut } from "@features/auth";
+import { useAppDispatch } from "@store";
+import { useSelector } from "react-redux";
 
 const Header = () => {
-	const { isAuthenticated, logOut } = useAuth();
+	const dispatch = useAppDispatch();
+	const user = useSelector(selectCurrentUser);
 
 	return (
 		<div className={styles.header}>
@@ -19,7 +22,7 @@ const Header = () => {
 			<div className={styles.header__navigation}>
 				<div className={styles.header__navigation__links}>
 					{headerNavigationLinks
-						.filter(navItem => isAuthenticated() || !navItem.authRequired)
+						.filter(navItem => user || !navItem.authRequired)
 						.map(navItem => (
 							<a key={navItem.label} href={navItem.link}>
 								{navItem.label}
@@ -27,10 +30,10 @@ const Header = () => {
 						))}
 				</div>
 				<div className={styles.header__navigation__buttons}>
-					{isAuthenticated() ? (
+					{user ? (
 						<>
 							<CartButton />
-							<Button variant="outline" onClick={logOut}>
+							<Button variant="outline" onClick={() => dispatch(logOut())}>
 								Log out
 							</Button>
 						</>
