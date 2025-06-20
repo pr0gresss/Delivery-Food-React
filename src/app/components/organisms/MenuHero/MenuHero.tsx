@@ -1,14 +1,16 @@
 import { Button } from '@components/atoms';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const HomeHero = () => {
+	const navigate = useNavigate();
+
 	return (
 		<StyledHeroContainer>
 			<StyledLeftHeroContainer>
 				<StyledContainerGap>
 					<StyledHeading>
-						Beautiful food & takeaway,{' '}
-						<StyledCyanText>delivered </StyledCyanText>
+						Beautiful food & takeaway, <StyledCyanText>delivered </StyledCyanText>
 						to your door.
 					</StyledHeading>
 					<StyledParagraph>
@@ -18,7 +20,7 @@ const HomeHero = () => {
 					</StyledParagraph>
 				</StyledContainerGap>
 				<StyledContainerGap>
-					<StyledButton disabled>Place an order</StyledButton>
+					<StyledButton onClick={() => navigate("/menu")}>Place an order</StyledButton>
 					<StyledRatingContainer>
 						<img src="src/assets/images/trustpilot-logo.svg" alt="" />
 						<p>

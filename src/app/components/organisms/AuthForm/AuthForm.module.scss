@@ -6,6 +6,8 @@
   min-height: 80vh;
   gap: 50px;
   position: relative;
+  background-color: var(--bg-main);
+  z-index: 1;
 
   &::before {
     content: "";

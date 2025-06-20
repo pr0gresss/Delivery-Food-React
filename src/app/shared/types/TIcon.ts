@@ -1,1 +1,1 @@
-export type TIcon = "cart" | "youtube" | "instagram" | "twitter";
+export type TIcon = "cart" | "youtube" | "instagram" | "twitter" | "moon" | "sun";

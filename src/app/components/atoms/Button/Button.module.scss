@@ -1,6 +1,5 @@
 .button {
   border: 0;
-
   display: inline-flex;
   padding: 12px 24px;
   justify-content: center;
@@ -9,6 +8,7 @@
   width: 100%;
   border-radius: 6px;
   flex: 1;
+  min-width: max-content;
 
   outline: 1px solid transparent;
 
