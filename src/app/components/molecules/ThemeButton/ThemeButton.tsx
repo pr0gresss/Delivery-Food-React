@@ -12,7 +12,6 @@ const ThemeButton = () => {
   useEffect(() => {
     
     if(theme) {
-      console.log(theme)
       setTheme(theme);
       document.body.setAttribute("data-theme", theme);
     } else {
