@@ -3,19 +3,18 @@ import styles from "./ThemeButton.module.scss";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@store";
 import { selectTheme, toggleTheme } from "@features/theme";
-import { getBrowserTheme, setTheme } from "@utils";
+import { getBrowserTheme, setLocalValue, THEME_KEY } from "@utils";
 
 const ThemeButton = () => {
   const theme = useAppSelector(selectTheme);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    
-    if(theme) {
-      setTheme(theme);
+    if (theme) {
+      setLocalValue(THEME_KEY, theme);
       document.body.setAttribute("data-theme", theme);
     } else {
-      return setTheme(getBrowserTheme())
+      return setLocalValue(THEME_KEY, getBrowserTheme());
     }
   }, [theme]);
 

@@ -29,26 +29,26 @@ export function useFormState<T extends object>(
   };
 
   const validateAll = (): boolean => {
-		let isValid = true;
-		const newErrors: Record<keyof T, string[]> = initErrorState(initial);
+    let isValid = true;
+    const newErrors: Record<keyof T, string[]> = initErrorState(initial);
 
-		for (const key in state) {
-			const value = state[key];
-			const fieldValidators = validators?.[key] ?? [];
-			const fieldErrors = fieldValidators
-				.flatMap(validator => validator(value) ?? [])
-				.filter((msg): msg is string => typeof msg === 'string' && msg.length > 0);
+    for (const key in state) {
+      const value = state[key];
+      const fieldValidators = validators?.[key] ?? [];
+      const fieldErrors = fieldValidators
+        .flatMap((validator) => validator(value) ?? [])
+        .filter((msg): msg is string => typeof msg === "string" && msg.length > 0);
 
-			if (fieldErrors.length > 0) {
-				isValid = false;
-			}
+      if (fieldErrors.length > 0) {
+        isValid = false;
+      }
 
-			newErrors[key] = fieldErrors;
-		}
+      newErrors[key] = fieldErrors;
+    }
 
-		setErrors(newErrors);
-		return isValid;
-	};
+    setErrors(newErrors);
+    return isValid;
+  };
 
   return [state, setField, reset, errors, validateAll];
 }

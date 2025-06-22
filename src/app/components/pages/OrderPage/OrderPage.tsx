@@ -33,7 +33,6 @@ const OrderPage = () => {
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(e);
     setLoadingState(true);
 
     if (!validateAll) return;

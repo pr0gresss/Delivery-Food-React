@@ -7,6 +7,6 @@ const HomePage = () => {
       <HomeHero></HomeHero>
     </MainTemplate>
   );
-}
+};
 
 export default HomePage;

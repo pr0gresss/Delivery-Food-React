@@ -15,7 +15,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--bg-tetriary); /* the color you want */
+    background-color: var(--bg-tetriary);
     mask-image: url("/src/assets/images/props/footer-prop.svg");
     mask-repeat: no-repeat;
     mask-position: left bottom;
@@ -46,7 +46,7 @@
       p {
         font-size: 16px;
         line-height: 27px;
-        letter-spacing: .36px;
+        letter-spacing: 0.36px;
         max-width: 255px;
         width: 100%;
         color: var(--text-secondary);

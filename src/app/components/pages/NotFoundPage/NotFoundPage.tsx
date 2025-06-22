@@ -5,10 +5,13 @@ const NotFoundPage = () => {
   return (
     <MainTemplate>
       <div className={styles.container}>
-        <h1>Error <span>404</span>: Not found.</h1>
+        <h1>
+          Error <span>404</span>: Not found.
+        </h1>
         <p>
-          The Page you are looking for doesn't exist or an other error occurred.<br/>Go back, or head over to weeblr.com to
-          choose a new direction.
+          The Page you are looking for doesn't exist or an other error occurred.
+          <br />
+          Go back, or head over to weeblr.com to choose a new direction.
         </p>
       </div>
     </MainTemplate>

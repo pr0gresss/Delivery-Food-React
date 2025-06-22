@@ -21,7 +21,7 @@ function App() {
     return () => unsubscribe();
   }, [dispatch]);
 
-  return <AppRoutes/>;
+  return <AppRoutes />;
 }
 
 export default App;

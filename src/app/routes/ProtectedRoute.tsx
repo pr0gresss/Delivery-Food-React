@@ -1,11 +1,10 @@
-import { selectCurrentUser } from "@features/auth";
-import { useAppSelector } from "@store";
+import { AUTH_KEY, getLocalValue } from "@utils";
 import { Navigate, Outlet } from "react-router-dom";
 
 const ProtectedRoute = () => {
-  const user = !!useAppSelector(selectCurrentUser);
+  const userId = getLocalValue(AUTH_KEY);
 
-  return user ? <Outlet /> : <Navigate to="/auth" replace />;
+  return userId ? <Outlet /> : <Navigate to="/auth" replace />;
 };
 
 export default ProtectedRoute;

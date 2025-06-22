@@ -1,8 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { auth } from "@services";
-import { mapFirebaseUserToUser } from "@utils";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail } from "firebase/auth";
+import { AUTH_KEY, mapFirebaseUserToUser } from "@utils";
+import { removeLocalValue } from "app/shared/utils/localStorageHelpers";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  sendPasswordResetEmail,
+} from "firebase/auth";
 
 export const signUp = createAsyncThunk(
   "auth/signUp",
@@ -31,6 +37,7 @@ export const logIn = createAsyncThunk(
 export const logOut = createAsyncThunk("auth/logOut", async (_, thunkAPI) => {
   try {
     await signOut(auth);
+    removeLocalValue(AUTH_KEY);
     return null;
   } catch (error: any) {
     return thunkAPI.rejectWithValue(error.message);

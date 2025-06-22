@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { setLocalValue } from "./localStorageHelpers";
 
 export function withAsyncLogger<T>(
   asyncFn: (...args: any[]) => Promise<T>,
@@ -7,7 +8,7 @@ export function withAsyncLogger<T>(
   return async (...args: any[]) => {
     try {
       const result = await asyncFn(...args);
-      localStorage.setItem(storageKey, JSON.stringify(result));
+      setLocalValue(storageKey, JSON.stringify(result));
       return result;
     } catch (error) {
       console.error("Error in wrapped async function:", error);

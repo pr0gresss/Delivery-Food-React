@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { logIn, logOut, resetPassword, signUp } from "./authThunks";
 import { IUser } from "@interfaces";
+import { AUTH_KEY, setLocalValue } from "@utils";
 
 interface AuthState {
   currentUser: IUser | null;
@@ -18,6 +19,9 @@ const authSlice = createSlice({
   reducers: {
     setUser(state, action) {
       state.currentUser = action.payload;
+      if (state.currentUser !== null) {
+        setLocalValue<string>(AUTH_KEY, action.payload.uid);
+      }
     },
   },
   extraReducers: (builder) => {

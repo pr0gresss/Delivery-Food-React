@@ -1,8 +1,8 @@
 import { TIcon } from "@types";
 
 export interface SocialLink {
-  icon: TIcon,
-  link: string,
+  icon: TIcon;
+  link: string;
 }
 
 export const footerSocialLinks: SocialLink[] = [
@@ -17,5 +17,5 @@ export const footerSocialLinks: SocialLink[] = [
   {
     icon: "instagram",
     link: "https://instagram.com",
-  }
+  },
 ];

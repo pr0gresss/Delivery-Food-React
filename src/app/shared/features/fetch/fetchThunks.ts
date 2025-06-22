@@ -20,22 +20,19 @@ export const fetchTypedData = <T>(withLogger = false) =>
   });
 
 export const postTypedData = <TResponse, TPayload>(withLogger = false) =>
-  createAsyncThunk<TResponse, IPostArgs<TPayload>>(
-    "fetch/postData",
-    async ({ url, payload }: IPostArgs<TPayload>) => {
-      const postFn = async () => {
-        const res = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        });
+  createAsyncThunk<TResponse, IPostArgs<TPayload>>("fetch/postData", async ({ url, payload }: IPostArgs<TPayload>) => {
+    const postFn = async () => {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
-        if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
-        return (await res.json()) as TResponse;
-      };
+      if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
+      return (await res.json()) as TResponse;
+    };
 
-      return withLogger ? withAsyncLogger(postFn, "lastPostResponse")() : postFn();
-    }
-  );
+    return withLogger ? withAsyncLogger(postFn, "lastPostResponse")() : postFn();
+  });

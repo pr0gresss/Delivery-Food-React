@@ -1,13 +1,13 @@
 import { ICartItem } from "@interfaces";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { loadCartFromStorage, saveCartToStorage } from "@utils";
+import { getLocalValue, setLocalValue, CART_KEY } from "@utils";
 
 interface ICartState {
   items: ICartItem[];
 }
 
 const initialState: ICartState = {
-  items: loadCartFromStorage(),
+  items: JSON.parse(getLocalValue(CART_KEY) ?? ""),
 };
 
 const cartSlice = createSlice({
@@ -24,25 +24,25 @@ const cartSlice = createSlice({
         state.items.push({ product, amount });
       }
 
-      saveCartToStorage(state.items);
+      setLocalValue(CART_KEY, JSON.stringify(state.items));
     },
     removeFromCart(state, action: PayloadAction<ICartItem>) {
       state.items = state.items.filter((item) => item.product.id !== action.payload.product.id);
-      saveCartToStorage(state.items);
+      setLocalValue(CART_KEY, JSON.stringify(state.items));
     },
     updateCartItemAmount(state, action: PayloadAction<ICartItem>) {
       const { product, amount } = action.payload;
       const existingItem = state.items.find((item) => item.product.id === product.id);
 
-      if (!existingItem) return; 
+      if (!existingItem) return;
 
       existingItem.amount = amount;
-      
-      saveCartToStorage(state.items);
+
+      setLocalValue(CART_KEY, JSON.stringify(state.items));
     },
     clearCart(state) {
       state.items = [];
-      saveCartToStorage([]);
+      setLocalValue(CART_KEY, []);
     },
   },
 });

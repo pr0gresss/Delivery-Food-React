@@ -9,7 +9,10 @@ import { useAppDispatch } from "@store";
 import { signUp } from "@features/auth";
 
 const SignUpForm: React.FC<IAuthFormProps> = ({ toggleAuthMode }) => {
-  const [form, setField, resetForm, errors, validateAll] = useFormState({ email: "", password: "" }, {email: [validateEmail], password: [validateLength(), validatePasswordStrength]});
+  const [form, setField, resetForm, errors, validateAll] = useFormState(
+    { email: "", password: "" },
+    { email: [validateEmail], password: [validateLength(), validatePasswordStrength] }
+  );
   const [isLoading, setLoadingState] = useState<boolean>(false);
 
   const dispatch = useAppDispatch();
@@ -20,7 +23,7 @@ const SignUpForm: React.FC<IAuthFormProps> = ({ toggleAuthMode }) => {
     if (!validateAll()) return;
 
     setLoadingState(true);
-    
+
     const formData = {
       email: form.email,
       password: form.password,
@@ -40,7 +43,7 @@ const SignUpForm: React.FC<IAuthFormProps> = ({ toggleAuthMode }) => {
         <Input
           type="email"
           id="email"
-					errors={errors.email}
+          errors={errors.email}
           value={form.email}
           onChange={(e) => setField("email", e.target.value)}
           placeholder="Enter your email"
@@ -53,7 +56,7 @@ const SignUpForm: React.FC<IAuthFormProps> = ({ toggleAuthMode }) => {
         <Input
           type="password"
           id="password"
-					errors={errors.password}
+          errors={errors.password}
           value={form.password}
           onChange={(e) => setField("password", e.target.value)}
           placeholder="Enter your password"

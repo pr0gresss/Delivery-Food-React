@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { TTheme } from "@types";
-import { getBrowserTheme, getTheme } from "@utils";
+import { getBrowserTheme, getLocalValue, THEME_KEY } from "@utils";
 
-const initialState: TTheme = getTheme() || getBrowserTheme();
+const initialState = getLocalValue<TTheme>(THEME_KEY) || getBrowserTheme();
 
 const themeSlice = createSlice({
   name: "theme",
