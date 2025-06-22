@@ -2,7 +2,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { auth } from "@services";
 import { AUTH_KEY, mapFirebaseUserToUser } from "@utils";
-import { removeLocalValue } from "app/shared/utils/localStorageHelpers";
+import { removeLocalValue } from "@utils";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
