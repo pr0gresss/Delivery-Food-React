@@ -1,11 +1,13 @@
 .container {
+  position: relative;
   display: flex;
   flex-flow: column;
+  gap: 20px;
+  width: 100%;
   align-items: center;
   justify-content: center;
-  min-height: 80vh;
-  gap: 50px;
-  position: relative;
+  min-height: 70vh;
+  text-align: center;
   background-color: var(--bg-main);
   z-index: 1;
 
@@ -17,15 +19,23 @@
     right: 0;
     width: 100%;
     background-color: var(--bg-secondary);
-    transform: skewY(-3deg);
+    transform: skewY(-15deg);
     transform-origin: top right;
     height: 100%;
   }
 
   h1 {
-    color: var(--text-tetriary);
-    font-weight: 400;
-    font-size: 50px;
-    line-height: 55px;
+    font-size: 52px;
+    font-weight: normal;
+
+    span {
+      color: var(--text-tetriary);
+    }
+  }
+
+  p {
+    color: var(--text-secondary);
+    line-height: 26px;
+    font-weight: 300;
   }
 }

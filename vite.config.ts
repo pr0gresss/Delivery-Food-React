@@ -14,6 +14,7 @@ export default defineConfig({
       "@services": path.resolve(__dirname, "src/app/shared/services"),
       "@store": path.resolve(__dirname, "src/app/shared/store"),
       "@features": path.resolve(__dirname, "src/app/shared/features"),
+      "@routes": path.resolve(__dirname, "src/app/routes"),
     },
   },
 });

@@ -1,6 +1,7 @@
 import { authReducer } from "@features/auth";
 import { cartReducer } from "@features/cart";
 import { fetchReducer } from "@features/fetch";
+import { themeReducer } from "@features/theme";
 import { configureStore } from "@reduxjs/toolkit";
 
 export const store = configureStore({
@@ -8,6 +9,7 @@ export const store = configureStore({
     cart: cartReducer,
     auth: authReducer,
     fetch: fetchReducer,
+    theme: themeReducer,
   },
 });
 
