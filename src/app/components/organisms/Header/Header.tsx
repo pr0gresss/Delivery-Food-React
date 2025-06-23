@@ -5,6 +5,7 @@ import { CartButton, ThemeButton } from "@components/molecules";
 import { selectCurrentUser, logOut } from "@features/auth";
 import { useAppDispatch } from "@store";
 import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
@@ -26,9 +27,7 @@ const Header = () => {
           {headerNavigationLinks
             .filter((navItem) => user || !navItem.authRequired)
             .map((navItem) => (
-              <a key={navItem.label} onClick={() => navigate(navItem.link)}>
-                {navItem.label}
-              </a>
+              <NavLink className={({ isActive }) => isActive ? styles.active : ""} key={navItem.label} to={navItem.link} end>{navItem.label}</NavLink>
             ))}
         </div>
         <div className={styles.header__navigation__buttons}>

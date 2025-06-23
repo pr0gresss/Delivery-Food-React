@@ -32,10 +32,12 @@ label {
   color: var(--text-main);
 }
 
-body[data-theme="light"] {
+body {
   font-family: Inter;
   font-weight: 400;
+}
 
+body[data-theme="light"] {
   /* Colors */
   --bg-main: #ffffff;
   --bg-accent-main: #35b8be;
@@ -75,9 +77,6 @@ body[data-theme="light"] {
 }
 
 body[data-theme="dark"] {
-  font-family: Inter;
-  font-weight: 400;
-
   /* Colors */
   --bg-main: #21252b;
   --bg-accent-main: #35b8be;

@@ -2,7 +2,7 @@ export const THEME_KEY = "theme";
 export const AUTH_KEY = "user_id";
 export const CART_KEY = "cart_items";
 
-export const setLocalValue = <T>(key: string, value: T): void => {
+export const setLocalValue = (key: string, value: string): void => {
   localStorage.setItem(key, value as string);
 };
 
