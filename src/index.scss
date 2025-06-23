@@ -70,6 +70,8 @@ body[data-theme="light"] {
   --input-primary-stroke: #dddddd;
   --input-primary-stroke-hover: #35b8be;
   --input-primary-stroke-focus: #000;
+
+  --skeleton-gradient: linear-gradient(to right, #e5f1f3 0%, #f1f9fa 50%, #e5f1f3 100%);
 }
 
 body[data-theme="dark"] {
@@ -111,4 +113,6 @@ body[data-theme="dark"] {
   --input-primary-stroke: #555a60;
   --input-primary-stroke-hover: #35b8be;
   --input-primary-stroke-focus: #35b8be;
+
+  --skeleton-gradient: linear-gradient(to right, #2a2e35 0%, #2d333a 50%, #2a2e35 100%);
 }

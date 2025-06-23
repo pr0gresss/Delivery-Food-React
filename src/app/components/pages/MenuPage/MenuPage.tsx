@@ -1,4 +1,4 @@
-import { ProductList } from "@components/organisms";
+import { ProductList, ProductListSkeleton } from "@components/organisms";
 import styles from "./MenuPage.module.scss";
 import { TooltipElement } from "@components/atoms";
 import { MainTemplate } from "@components/templates";
@@ -30,7 +30,7 @@ const MenuPage = () => {
           </p>
         </div>
         {loading ? (
-          <h2 className={styles.container__products__empty}>Loading products...</h2>
+          <ProductListSkeleton/>
         ) : error ? (
           <h2 className={styles.container__products__empty}>{error}</h2>
         ) : data && data.length === 0 ? (

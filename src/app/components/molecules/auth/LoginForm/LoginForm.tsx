@@ -35,7 +35,7 @@ const LoginForm: React.FC<IAuthFormProps> = ({ toggleAuthMode }) => {
       .unwrap()
       .then(() => {
         resetForm();
-        navigate("/menu");
+        navigate("/");
       })
       .catch((err) => console.error(err))
       .finally(() => setLoadingState(false));
