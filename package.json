@@ -6,6 +6,7 @@
 	"type": "module",
 	"author": "Dzmitry Tsublianok",
 	"scripts": {
+		"test": "jest",
 		"dev": "vite",
 		"build": "tsc -b && vite build",
 		"lint": "eslint .",
@@ -19,7 +20,8 @@
 		"react-dom": "^19.0.0",
 		"react-redux": "^9.2.0",
 		"react-router-dom": "^7.6.2",
-		"styled-components": "^6.1.17"
+		"styled-components": "^6.1.17",
+		"util": "^0.12.5"
 	},
 	"prettier": {
 		"singleQuote": false,
@@ -28,6 +30,10 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.21.0",
+		"@testing-library/jest-dom": "^6.6.3",
+		"@testing-library/react": "^16.3.0",
+		"@testing-library/user-event": "^14.6.1",
+		"@types/jest": "^30.0.0",
 		"@types/node": "^22.13.9",
 		"@types/react": "^19.0.10",
 		"@types/react-dom": "^19.0.4",
@@ -36,7 +42,13 @@
 		"eslint-plugin-react-hooks": "^5.1.0",
 		"eslint-plugin-react-refresh": "^0.4.19",
 		"globals": "^15.15.0",
+		"identity-obj-proxy": "^3.0.0",
+		"jest": "^30.0.3",
+		"jest-environment-jsdom": "^30.0.2",
+		"jest-transformer-svg": "^2.1.0",
 		"sass-embedded": "^1.85.1",
+		"ts-jest": "^29.4.0",
+		"ts-node": "^10.9.2",
 		"typescript": "~5.7.2",
 		"typescript-eslint": "^8.24.1",
 		"vite": "^6.2.0"

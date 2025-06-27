@@ -2,8 +2,8 @@ import { ICartItem } from "@interfaces";
 import React, { useState } from "react";
 import styles from "./OrderItemCard.module.scss";
 import { Button, Input } from "@components/atoms";
-import { useAppDispatch } from "@store";
 import { removeFromCart, updateCartItemAmount } from "@features/cart";
+import { useDispatch } from "react-redux";
 
 interface IOrderItemCardProps {
   cartItem: ICartItem;
@@ -11,7 +11,7 @@ interface IOrderItemCardProps {
 
 const OrderItemCard: React.FC<IOrderItemCardProps> = ({ cartItem }) => {
   const [amount, setAmount] = useState<number>(cartItem.amount);
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
 
   const handeItemAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newAmount = Number(e.target.value);
