@@ -7,7 +7,7 @@ export interface INavItem {
 export const headerNavigationLinks: INavItem[] = [
   {
     label: "Home",
-    link: "/home",
+    link: "/",
     authRequired: false,
   },
   {

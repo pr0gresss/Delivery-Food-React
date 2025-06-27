@@ -1,18 +1,20 @@
 import styles from "./Header.module.scss";
 import { headerNavigationLinks } from "./headerNavigationLinks";
 import { Button } from "@components/atoms";
-import { CartButton } from "@components/molecules";
+import { CartButton, ThemeButton } from "@components/molecules";
 import { selectCurrentUser, logOut } from "@features/auth";
 import { useAppDispatch } from "@store";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
 	const dispatch = useAppDispatch();
 	const user = useSelector(selectCurrentUser);
+	const navigate = useNavigate();
 
 	return (
 		<div className={styles.header}>
-			<a href="/">
+			<a onClick={() => navigate("/")}>
 				<img
 					src="src/assets/images/logo.svg"
 					className={styles.header__logo}
@@ -24,12 +26,13 @@ const Header = () => {
 					{headerNavigationLinks
 						.filter(navItem => user || !navItem.authRequired)
 						.map(navItem => (
-							<a key={navItem.label} href={navItem.link}>
+							<a key={navItem.label} onClick={() => navigate(navItem.link)}>
 								{navItem.label}
 							</a>
 						))}
 				</div>
 				<div className={styles.header__navigation__buttons}>
+					<ThemeButton/>
 					{user ? (
 						<>
 							<CartButton />
@@ -38,7 +41,7 @@ const Header = () => {
 							</Button>
 						</>
 					) : (
-						<Button>Log in</Button>
+						<Button onClick={() => navigate("/auth")}>Log in</Button>
 					)}
 				</div>
 			</div>

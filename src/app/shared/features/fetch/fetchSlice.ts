@@ -26,7 +26,7 @@ const fetchSlice = createSlice({
   extraReducers: (builder) => {
     builder.addMatcher(
       (action): action is any =>
-        action.type.startsWith("fetch/fetchData") &&
+        /^fetch\/(fetchData|postData)/.test(action.type) &&
         ["pending", "fulfilled", "rejected"].some((s) => action.type.endsWith(s)),
       (state, action) => {
         const key = action.meta.arg.key;

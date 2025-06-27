@@ -1,4 +1,14 @@
 {
+  "compilerOptions": {
+  "jsx": "react-jsx",
+  "module": "ESNext",
+  "target": "ES6",
+  "moduleResolution": "node",
+  "esModuleInterop": true,
+  "allowJs": true,
+  "isolatedModules": true,
+  "types": ["jest", "@testing-library/jest-dom"],
+  },
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
