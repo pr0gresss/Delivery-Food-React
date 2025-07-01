@@ -1,23 +1,38 @@
 .footer {
   display: flex;
+  position: relative;
   flex-flow: column nowrap;
   padding: 100px 120px 60px 120px;
   background-color: var(--bg-secondary);
   gap: 100px;
   position: relative;
   overflow: hidden;
-  background-image: url('/src/assets/images/props/footer-prop.svg');
-  background-size:contain;
-  background-position: left bottom;
-  background-repeat: no-repeat;
-  
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-tetriary); /* the color you want */
+    mask-image: url("/src/assets/images/props/footer-prop.svg");
+    mask-repeat: no-repeat;
+    mask-position: left bottom;
+    mask-size: contain;
+    -webkit-mask-image: url("/src/assets/images/props/footer-prop.svg");
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: left bottom;
+    -webkit-mask-size: contain;
+  }
+
   &__top {
     z-index: 2;
     display: flex;
     gap: 50px;
     flex-flow: row wrap;
     justify-content: space-between;
-    
+
     &__company {
       display: flex;
       flex-flow: column;
@@ -57,8 +72,9 @@
           font-weight: 400;
           letter-spacing: 1.5px;
           text-transform: uppercase;
+          color: var(--text-main);
         }
-        
+
         &__content {
           gap: 28px;
           display: flex;
@@ -66,7 +82,7 @@
           font-size: 15px;
           line-height: 20px;
           font-weight: 400;
-          
+
           a {
             color: var(--text-secondary);
           }
@@ -85,7 +101,7 @@
       display: block;
       height: 1px;
       border: 0;
-      border-top: 1px solid rgba(126, 130, 143, 0.09);
+      border-top: 1px solid var(--text-gray);
       margin: 1em 0;
       padding: 0;
     }
@@ -107,7 +123,7 @@
           color: var(--text-tetriary);
 
           &:hover {
-            opacity: .7;
+            opacity: 0.7;
           }
         }
       }

@@ -30,11 +30,11 @@ const MenuPage = () => {
           </p>
         </div>
         {loading ? (
-          <div className={styles.container__products__empty}>Loading products...</div>
+          <h2 className={styles.container__products__empty}>Loading products...</h2>
         ) : error ? (
-          <div className={styles.container__products__empty}>{error}</div>
+          <h2 className={styles.container__products__empty}>{error}</h2>
         ) : data && data.length === 0 ? (
-          <div className={styles.container__products__empty}>No products available</div>
+          <h2 className={styles.container__products__empty}>No products available</h2>
         ) : (
           data && <ProductList products={data} />
         )}
