@@ -15,7 +15,8 @@
       "@utils" : ["app/shared/utils"],
       "@services": ["app/shared/services"],
       "@store": ["app/shared/store"],
-      "@features/*": ["app/shared/features/*"]
+      "@features/*": ["app/shared/features/*"],
+      "@routes": ["app/routes"]
     },
 
     /* Bundler mode */

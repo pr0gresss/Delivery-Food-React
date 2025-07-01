@@ -1,0 +1,39 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  gap: 20px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  text-align: center;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background-color: var(--bg-secondary);
+    transform: skewY(-15deg);
+    transform-origin: top right;
+    height: 100%;
+  }
+
+  h1 {
+    font-size: 52px;
+    font-weight: normal;
+
+    span {
+      color: var(--text-tetriary);
+    }
+  }
+
+  p {
+    color: var(--text-secondary);
+    line-height: 26px;
+    font-weight: 300;
+  }
+}
